@@ -1,0 +1,21 @@
+{
+  "name": "sk-framework-core",
+  "version": "1.4.1",
+  "description": "Create, update, version and verify the mountable Sidekicks framework core: forge it from this repo onto any target folder, derive the next semver from what actually changed, report every framework skill and lib module added/removed/version-bumped, run five verification gates, write the auto-derived release log, and commit and tag locally without ever pushing.",
+  "files": [
+    "SKILL.md",
+    "config.defaults.yaml",
+    "rules/criterion.memory-lazy-load.md",
+    "rules/criterion.model-tier-substitution.md",
+    "rules/criterion.session-practices.md",
+    "rules/rule.branch-naming.md",
+    "rules/rule.cross-platform.md",
+    "rules/rule.incident-reports.md",
+    "rules/rule.lean-main-merge.md",
+    "rules/rule.local-memory-register.md",
+    "rules/rule.single-venv.md",
+    "rules/rule.timezone-bangkok.md",
+    "rules/rule.worktree-sibling-layout.md",
+    "skill.yaml"
+  ]
+}

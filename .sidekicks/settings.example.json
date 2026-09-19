@@ -1,0 +1,29 @@
+{
+  "_comment": [
+    "Template for .sidekicks/settings.json, which is GIT-IGNORED (per-machine).",
+    "Copy this file to settings.json and edit. active_project/active_service are",
+    "managed by `sidekicks project use` / `sidekicks service use` — do not hand-edit them.",
+    "",
+    "THIS FILE IS STATE, NOT CONFIGURATION. It records which project and service are active",
+    "on THIS machine, and nothing else. Configuration lives in the scope's config/ directory,",
+    "one file per family — see docs/guide/configuration.md.",
+    "",
+    "MOVED: `persistent_agent_memory` used to live here and now is the `agent_memory` block in",
+    "the root scope's config/agents.yaml, resolved like every other config block:",
+    "  sidekicks config get agent_memory          # what is configured, and which layer decided it",
+    "  sidekicks config where agent_memory        # which file to edit",
+    "  sidekicks config set agent_memory.enabled true",
+    "  sidekicks config set agent_memory.repository projects/<p>/services/<store>",
+    "It was a durable, shareable decision parked inside a git-ignored per-machine file, so half",
+    "of it could never travel with the repo. The old key is still READ as a deprecated fallback,",
+    "so a machine that has not migrated keeps its journal — but write the block instead.",
+    "",
+    "An optional `framework` block is still honored here: it is the per-machine layer of the",
+    "framework enable map (`sidekicks framework disable <id>` writes the committed team default",
+    "in config/framework.yaml; this file is how you turn one off on your laptop only).",
+    "See docs/guide/framework-settings.md."
+  ],
+
+  "active_project": "sidekicks",
+  "active_service": null
+}

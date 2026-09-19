@@ -1,0 +1,7 @@
+# Framework rules extracted from AGENTS.md; each body travels with this skill.
+skill: sk-cli
+
+rules:
+  - id: rule.plan-first
+    title: Enter plan mode before implementation
+    body: rules/rule.plan-first.md

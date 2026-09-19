@@ -1,0 +1,24 @@
+{
+  "name": "core-lifecycle",
+  "version": "1.1.0",
+  "description": "core-lifecycle library component",
+  "files": [
+    "_derive.mjs",
+    "_forge.mjs",
+    "_guard.mjs",
+    "_seed.mjs",
+    "_shared.mjs",
+    "_wiring.mjs",
+    "doctor.mjs",
+    "drift.mjs",
+    "forge.mjs",
+    "init.mjs",
+    "plan.mjs",
+    "publish.mjs",
+    "release.mjs",
+    "status.mjs",
+    "update.mjs",
+    "verify-remote.mjs",
+    "verify.mjs"
+  ]
+}

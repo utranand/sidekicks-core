@@ -1,0 +1,10 @@
+{
+  "name": "sk-publish-core",
+  "version": "2.9.0",
+  "description": "Forge and maintain the mountable Sidekicks framework core from the resolved framework preset, including its skills, CLI substrate, libraries, owned scripts, agent packs, installers, and verification manifest.",
+  "files": [
+    "SKILL.md",
+    "rules/rule.repo-root-scripts-lifecycle.md",
+    "skill.yaml"
+  ]
+}

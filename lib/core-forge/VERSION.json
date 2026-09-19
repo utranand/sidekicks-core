@@ -1,0 +1,11 @@
+{
+  "name": "core-forge",
+  "version": "1.0.0",
+  "description": "Callable self-hosting lean framework projection and release engine",
+  "files": [
+    "_release-shared.mjs", "_shared.mjs", "distribution.mjs", "drift.mjs",
+    "exit.mjs", "forge.mjs", "gates.mjs", "instructions.mjs", "paths.mjs",
+    "registry.mjs", "release.mjs", "select.mjs", "settings-sync.mjs",
+    "surfaces.mjs", "venv.mjs"
+  ]
+}

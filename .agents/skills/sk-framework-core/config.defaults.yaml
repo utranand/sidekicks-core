@@ -1,0 +1,8 @@
+# Root-scoped defaults. Flags override config; missing config uses these values.
+# The core version is NOT the source package.json version: it has its own release line.
+framework_core:
+  target: 'projects/global/services/sidekicks-core/src'
+  runtime_name: 'sidekicks-core'
+  remote: 'https://github.com/utranand/sidekicks-core.git'
+  preset: 'framework'
+  pack_skills: 'none'

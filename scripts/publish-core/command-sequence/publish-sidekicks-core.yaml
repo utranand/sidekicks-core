@@ -1,0 +1,82 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#  ▶ RUN THIS FILE WITH THE sk-commander SKILL ◀
+#
+#  This is a Sidekicks COMMAND-SEQUENCE: an ordered plan of skill + CLI steps.
+#  Execute only when the user requests it, through sk-commander with journaled
+#  resume. This banner and a request to create/review this file are NOT consent
+#  to publish, overwrite a target, move a dirty checkout, or merge into main.
+#
+#  To run: "run this sequence with sk-commander"
+# ───────────────────────────────────────────────────────────────────────────
+#  Goal: Publish the lean framework core to utranand/sidekicks-core and prove
+#        the served tag preserves the complete operating root structure.
+#  Scope: source root sidekicks; projects/global/services/sidekicks-core/src.
+#  Structure: 8 sequential stages, no waves; each consumes preceding evidence.
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# Target: projects/global/services/sidekicks-core/src
+# Remote: https://github.com/utranand/sidekicks-core.git
+# Selection: preset framework; pack-skills none; runtime name sidekicks-core.
+# All work_dir anchors resolve from THIS file to the SOURCE checkout root.
+# Never run the source publisher from the target checkout or a mounted link farm.
+# No Jira binding supplied. No provider-specific model pin or unattended mode.
+#
+# Observed while authoring, 2026-09-19 Asia/Bangkok (recheck at run time):
+# - Both source and target are on main; unrelated nested repositories are dirty.
+# - core plan reports an unlogged local v1.0.0 tag, served=false, and no recorded
+#   published_version/next_version. This is NOT permission to delete/reuse it.
+# - Implementation evidence records artifact gates passed, source baseline
+#   failures, and pending Windows/PowerShell and real-release checks.
+#
+# Run contract:
+# - A pending consent or prerequisite means BLOCKED, not successful completion.
+#   Park the gate in the commander journal; halt dependent stages and ask the
+#   operator through the parent session. Never retry a consent stop as a bypass.
+# - Reuse approvals only for the same action, paths, remote, refs and SHAs.
+#   On resume, recheck those bindings; changed content invalidates old evidence.
+# - Keep portable evidence under this work item's resolved run base. The release
+#   engine owns projects/global/services/sidekicks-core/artifacts/runs/core-forge/.
+# - No legacy forge, retired harness writes, blanket cleanup, forced push,
+#   tag deletion/replacement, gate-waiver flags, PR or protected-main merge.
+# - Completion distinguishes LOCAL, SERVED and ADVERTISED. A served tag does not
+#   imply main advertises it; report outstanding merges for separate approval.
+
+name: publish-sidekicks-core
+steps:
+  # Stage 1 — reconcile identity/history/readiness before any destination writes.
+  - skill: sk-framework-core
+    work_dir: ../../..
+    instruction: "work_item=publish-sidekicks-core. Read-only preflight from the source root. Read framework_core through sidekicks config get framework_core --json, then run rtk proxy node bin/sidekicks core plan --target projects/global/services/sidekicks-core/src --name sidekicks-core --preset framework --pack-skills none --remote https://github.com/utranand/sidekicks-core.git --json. Exit 10 is pending release debt, not a malformed command; inspect problems, history and the payload even when exit is zero. Verify the target is its own registered Git repository with origin fetch AND push URLs naming utranand/sidekicks-core. Inspect source/target HEADs, branches, tracked/staged/untracked changes, tags, marker and engine-owned release history. Reconcile unlogged tags with the operator before publication; never delete, move or silently adopt v1.0.0, reset history, or infer semver from source package.json. Establish a valid next version from actual release history and changed surfaces. Consult available implementation/release evidence; docs/implementation-plans/lean-framework-core/verification.md is optional when present because source-only docs do not ship with the core. If it is absent, obtain equivalent evidence for the current source revision from the release records or operator; absence never waives a required check. Distinguish known source baseline failures from new regressions, and require Windows/PowerShell release evidence before a real release. Do not relabel skipped or failed checks green. If history, required platform evidence, target identity or source readiness is unresolved, report the precise gate and stop dependent stages. Do not execute publication or repair unrelated projects."
+
+  # Stage 2 — authorize only the necessary local preparation, preserving all work.
+  - skill: sk-framework-core
+    work_dir: ../../..
+    instruction: "work_item=publish-sidekicks-core. Once stage 1 is satisfied, prepare non-protected work branches for every intentional write owner, including source release ledger/gitlink and target content. Recheck live Git state immediately before any HEAD move. A clean-tree git switch -c needs no duplicate approval; a tracked-dirty checkout, including dirty nested-repository observations, requires explicit checkout consent. Worktree creation always needs consent for its named sibling path; do not create one silently or install/build inside it. Use unique chore/publish-sidekicks-core branch names and never force-reset an existing branch. Preserve unrelated work, staging and the retired sidekicks-harness checkout/ledger. Review the exact managed paths the publisher will replace/prune and identify recoverable pre-publication commits; obtain target-specific consent if existing user content would be overwritten or removed. Never use broad clean/reset/stash or hand-edit CLI-managed state/config/skills. Record branch, source SHA, target SHA and approved replacement scope for later stages. Any unresolved gate blocks the sequence."
+
+  # Stage 3 — preview the exact destination; dry-run output is not a gate pass.
+  - run: rtk proxy node bin/sidekicks core publish --target projects/global/services/sidekicks-core/src --name sidekicks-core --preset framework --pack-skills none --remote https://github.com/utranand/sidekicks-core.git --dry-run
+    work_dir: ../../..
+
+  # Stage 4 — forge, run all artifact gates, and commit/tag locally only.
+  - skill: sk-publish-core
+    work_dir: ../../..
+    instruction: "work_item=publish-sidekicks-core. Check stage 3 output for WOULD REFUSE, missing history, version conflicts and undisclosed destructive changes; a zero dry-run exit alone is insufficient. Recheck stage 2 branch/cleanliness/overwrite bindings. Run rtk proxy node bin/sidekicks core publish --target projects/global/services/sidekicks-core/src --name sidekicks-core --preset framework --pack-skills none --remote https://github.com/utranand/sidekicks-core.git. Only append --version X.Y.Z if stage 1 explicitly settled that valid version; never hard-code source package.json or reuse an existing release tag. Require all eight gates: structure/containment verification, candidate doctor, artifact tests, drift, clean mount, upgrade, composition and self-host fixed point. Upgrade may be explicitly skipped only for a genuinely first release with no verified served predecessor, not merely because history is missing. Confirm scripts, canonical agents, host-agent ports, wiring, example configurations and pack metadata travel; exactly eight selected skills and AGENTS.md within 6144-8192 UTF-8 bytes. Absent-owner hooks remain inactive. No test/mount/upgrade waivers, allow-protected, allow-unpushed, allow-unlogged-tags or reland. Confirm the resulting target commit/tag, source managed-path commit, version, manifest digest and structured gate results; local publication is not remote publication. On a partial failure, inspect existing ledger, commits and tags before retrying so retries cannot silently cut another version. No push or merge."
+
+  # Stage 5 — bind outward consent to the exact core AND source pushes.
+  - skill: sk-framework-core
+    work_dir: ../../..
+    instruction: "work_item=publish-sidekicks-core. Inspect the verified local release and run rtk proxy node bin/sidekicks core release --target projects/global/services/sidekicks-core/src --name sidekicks-core --preset framework --pack-skills none --remote https://github.com/utranand/sidekicks-core.git --dry-run. Disclose the actual core remote, exact tag/work-branch refs and SHAs, and the source origin/work branch the engine also pushes. Explain that the tag is pushed first and may remain served after a later partial failure; recovery is inspection plus verify-remote/resumption, never deleting or retargeting a published tag. Request explicit authorization for these named outward pushes unless the user's execution request already grants that exact action/target scope. Creating this sequence or approving implementation is not such a grant. Record verifiable user authorization in the run journal. If approval is unavailable, mark this gate blocked and prevent stage 6; a delegate must return it to the parent, never self-grant. No PR, main merge, protected-branch write or unrelated tag is included."
+
+  # Stage 6 — push only the consent-bound release; never infer success from push.
+  - skill: sk-publish-core
+    work_dir: ../../..
+    instruction: "work_item=publish-sidekicks-core. Verify stage 5 contains actual user authorization matching the current target, remote URLs, exact tag and source/core branch SHAs; if anything changed, stop for renewed preflight rather than widening consent. Only then run rtk proxy node bin/sidekicks core release --target projects/global/services/sidekicks-core/src --name sidekicks-core --preset framework --pack-skills none --remote https://github.com/utranand/sidekicks-core.git --yes. The engine pushes the single tag first, then the core work branch, proves the served tree against sealed root_structure, and pushes the approved source work branch. No force, --tags, protected-main push, tag deletion, merge or PR. A partial push is not rolled back; inspect the remote refs and engine ledger before resuming the same release. Report any partial publication accurately."
+
+  # Stage 7 — fresh remote proof, including served files and advertisement state.
+  - run: rtk proxy node bin/sidekicks core verify-remote --target projects/global/services/sidekicks-core/src --name sidekicks-core --preset framework --pack-skills none --remote https://github.com/utranand/sidekicks-core.git --json
+    work_dir: ../../..
+
+  # Stage 8 — exercise the fetched tag independently and hand off main merges.
+  - skill: sk-framework-core
+    work_dir: ../../..
+    instruction: "work_item=publish-sidekicks-core. Require stage 7's scored checks to pass, not just a successful push message. Read the actual just-released version/tag from the engine ledger, confirm its SHA matches the approved release, and run rtk proxy node lib/core-forge/remote-smoke.mjs --remote https://github.com/utranand/sidekicks-core.git --ref TAG, substituting that verified tag (for example vX.Y.Z), never a guessed version, branch or placeholder. This fetches the served artifact and exercises its own successor forge/verification and normalized root-structure equivalence. Capture the smoke result, exact remote SHA, manifest digest, eight gate outcomes, Windows evidence, failed/skipped checks and recovery locations using portable paths. Report LOCAL versus SERVED versus ADVERTISED, plus source/core merges_outstanding and any release-evidence changes still uncommitted. A failed smoke leaves an already-pushed tag served but NOT fully verified; do not delete it or claim completion. Request separate authorization to merge the existing tested core/source work branches into main when needed; do not perform those merges, open PRs or create further commits implicitly."

@@ -1,0 +1,415 @@
+# config.example.yaml — committed, key-free schema documentation for the Sidekicks
+# project config (root scope: .sidekicks/config.yaml; user project: projects/<active>/config.yaml).
+#
+# HOW TO USE: copy this file to `config.yaml` in the same directory and fill in your api_key.
+# `config.yaml` is git-ignored (see the repo .gitignore) so your live key is never committed.
+# This example file carries NO real key and is safe to commit.
+#
+# Both image-generation skills (Claude + Gemini) read the SAME image_generation: block, so a
+# single per-scope config.yaml configures both identically.
+image_generation:
+  # Required for the Python generation path. Obtain from https://aistudio.google.com/apikey .
+  # Read from config ONLY — never from the environment, never as a CLI flag. The Gemini-CLI
+  # extension path uses OAuth and does not need this key.
+  api_key: "YOUR_GEMINI_API_KEY"
+
+  model: gemini-3.1-flash-image-preview    # default model variant
+  aspect_ratio: "1:1"                       # default aspect ratio (e.g. 1:1, 4:3, 16:9)
+  resolution: "1K"                          # default resolution: 1K | 2K
+  output_subdir: generated-images           # written under the resolved working folder
+
+# Deterministic run-completion notifier (scripts/run-notify-hook.mjs — Stop/SubagentStop/
+# SessionStart hook). NOT wired into any skill: the hook watches run state (registry
+# run.json headers, get-things-done tasks.yaml) and delivers a Slack message / email when
+# a run in THIS scope newly reaches done/blocked/failed/paused. Hard opt-in: absent block
+# or enabled != true = the hook does nothing for this scope.
+#
+# INHERITANCE (same pattern as local memory): the ROOT config's run_notify + slack blocks
+# are the shared base — a project whose config.yaml has no run_notify block inherits the
+# root one (and root's slack workspace when it has no slack block of its own); a project
+# block overrides the root one WHOLESALE (so `enabled: false` in a project opts that
+# project out even when root is enabled). Root-scope runs always use this root config.
+run_notify:
+  enabled: false            # set true to turn the notifier on for this scope
+  transports: [slack]       # any of: slack, email
+  # env: my-workspace       # slack: alias to use (default: first alias under slack:)
+  # skills: []              # optional allow-list (short or full names); empty = all skills
+  # catchup_hours: 24       # already-terminal runs older than this are marked seen
+  #                         # WITHOUT notifying (no history flood when first enabled)
+# External-CLI registry (sk-cli-executor / sk-cli-orchestrator) is NOT a block in
+# this file — it lives in its own scope-resolved JSON so it round-trips losslessly in Node + Python
+# and never risks this file's live secrets/comments:
+#   root scope    → .sidekicks/cli-executors.json
+#   user project  → projects/<active>/cli-executors.json
+# Manage it ONLY with the CLI verbs (Rule 1 — .sidekicks/ is the CLI write surface):
+#   sidekicks cli-executor detect                       # scan the machine for installed CLIs
+#   sidekicks cli-executor register <name> --binary <exe> --invoke '<args,{brief}>' [--probe '<args>']
+#   sidekicks cli-executor list [--json]                # the effective set (built-ins ∪ registry)
+#   sidekicks cli-executor remove <name>
+# A missing registry file is not an error — the built-in codex/gemini/antigravity adapters apply by
+# default. See .sidekicks/cli-executors.example.json for the full schema.
+
+# Slack delivery reuses the sk-slack-connector `slack:` block in this same file
+# (channel routing: notifications.skills.<name> -> notifications.channel -> default_channel;
+# see .agents/skills/sk-slack-connector/config.example.yaml). Email delivery uses
+# this scope config's mail_sender: block via scripts/send-mail.py (schema in that script's
+# header: smtp_host/smtp_port/smtp_user/smtp_pass/mail_from/default_recipient).
+
+# Agent messaging — internal (LAN) transport: `sidekicks agent serve` (listener) and
+# `sidekicks agent bridge` (client). Precedence: CLI flag > this block > built-in default.
+# The bearer token may be pinned here; omit it to use the auto-minted one persisted at
+# .sidekicks/agents/.bridge/runtime/bridge.json (git-ignored). The server only ever
+# answers loopback/private-network peers regardless of configuration.
+bridge:
+  port: 7787
+  bind: 0.0.0.0            # serves the LAN. On a host with a PUBLIC IP, pin this to your private
+                           #   address (e.g. 192.168.x.x) so the port never listens publicly — the
+                           #   server warns at startup when it detects a public interface.
+  # token: <fixed bearer token>
+
+# Agent messaging — external transport: `sidekicks agent telegram` (long-poll relay to the
+# user's own bot). Values here OVERRIDE `agent telegram setup`-written runtime values; the
+# runtime file keeps mutable state (getUpdates offset). Put the real bot_token only in the
+# git-ignored config.yaml — never in this committed example.
+telegram:
+  # bot_token: "<from @BotFather>"
+  # chat_id: "<your chat id — the bot replies with it on first message>"
+  default_target: ethan      # plain chat messages route to this agent as tasks
+#   allowed_users:           # whitelist of USER ids (preferred). For GROUP chats you MUST list
+#     - "<your user id>"     #   member user ids here — a group's chat id alone is refused, since
+#                            #   it would grant every group member agent control.
+#   require_mention: true    # group chats: react only when the bot is @mentioned (recommended)
+#
+# ── Multi-lane: the channel table (optional) ────────────────────────────────────────────
+# ► FULL COPY-AND-EDIT SAMPLES: .sidekicks/config.telegram.example.yaml — four worked
+#   scenarios (today's single lane · one bot with forum topics · N bots · per-lane
+#   authorization), a field reference, and the operator flow for standing up a new lane.
+#   The summary below is enough for one extra lane; that file is where to go for the rest.
+# Several orchestrators, each owning its own Telegram surface. A channel maps
+# (bot, chat, optional forum topic) → a target orchestrator, and each lane gets its OWN
+# relay mailbox agent (`telegram-<id>`) so completions route back to the chat they came
+# from. The lane marked `default: true` keeps the bare `telegram` mailbox.
+#
+#   bots:                    # omit entirely to keep the single scalar bot_token above
+#     - id: default          #   the generic TELEGRAM_BOT_TOKEN overrides THIS bot
+#       bot_token: "<from @BotFather>"
+#     - id: shp              #   TELEGRAM_BOT_TOKEN_SHP overrides this one (and wins over
+#       bot_token: "<…>"     #   the generic key) — that is the N-token .env story
+#   channels:
+#     - id: db-ops           # REQUIRED, lowercase/digits/hyphens — becomes agent `telegram-db-ops`
+#       bot: default
+#       chat: "<chat id>"
+#       target: dana         # the orchestrator that owns this lane
+#       default: true        # exactly one lane may claim the legacy `telegram` mailbox
+#     - id: jira
+#       bot: default
+#       chat: "<supergroup id>"
+#       topic: 7             # a forum topic is its own lane (and its own conversation thread)
+#       target: nina
+#       allowed_users:       # optional — REPLACES the global list for this lane only,
+#         - "<user id>"      #   so one lane can be locked to one person
+#
+# ⚠ BLOCK FORM ONLY. The config parser does not support YAML flow mappings and fails
+#   SILENTLY: `- { bot: default, chat: "1" }` parses into garbage rather than erroring.
+#   Write one `key: value` per indented line, as above.
+# ⚠ INDENT THE `- ` ITEMS DEEPER THAN THEIR KEY. A same-indent sequence —
+#       channels:
+#       - id: ops        ← WRONG, silently reads as empty
+#   is parsed as null by this subset. Both mistakes are now reported by
+#   `sidekicks agent telegram status` and refused by `serve`, rather than quietly
+#   falling back to the single-chat lane.
+# ⚠ Keep the whole `telegram:` block CONTIGUOUS — the reader slices this section up to the
+#   next column-0 key, so a top-level line in the middle truncates the table.
+# An inbound message from a chat that matches NO channel is never routed (it would land in
+# the wrong domain's orchestrator); the relay logs it and replies once with the ids to add.
+#
+#   thread_idle_gap_minutes: 480
+#                            # CONVERSATION MEMORY: how long a chat may go quiet before the next
+#                            #   message starts a NEW conversation thread. Default 480 (a working
+#                            #   day) — deliberately generous, because a mid-session pause is
+#                            #   normal and splitting one conversation in two is not recoverable.
+#                            #   `/new` in the chat forces a break; `/thread` reports the current
+#                            #   one; replying to an old message rebinds to its thread; a Telegram
+#                            #   forum topic is always its own thread regardless of the gap.
+#                            #   Inspect with `sidekicks agent thread list <agent>`.
+#
+# Env layer (HIGHEST precedence; process env > git-ignored repo-root .env file):
+#   TELEGRAM_BOT_TOKEN, TELEGRAM_ALLOWED_USERS (comma-separated ids),
+#   TELEGRAM_DEFAULT_TARGET, TELEGRAM_REQUIRE_MENTION, TELEGRAM_THREAD_IDLE_GAP.
+#
+# Auto-start (comms hook): when an agent comes online (`agent start` / standby `agent wait`)
+# and the daemon is not running, it is spawned automatically. Env equivalents win:
+# TELEGRAM_AUTO_RESTART / BRIDGE_AUTO_RESTART / SCHEDULER_AUTO_RESTART.
+#   telegram: { auto_restart: true }    bridge: { auto_restart: true }
+
+# Routine scheduler (`sidekicks agent scheduler`) — the fleet-wide clock that fires each agent's
+# scheduled routines (.sidekicks/agents/<name>/routines/routines.yaml) into its mailbox.
+# Schedules are Asia/Bangkok wall clock; manage them with `sidekicks agent routine`.
+scheduler:
+  # RECOMMENDED ON. Off (the default) means the ONLY thing that ever starts this daemon is a
+  # hand-run `agent scheduler serve` or a tray with `scheduler` in agent_tray.autostart — and a
+  # scheduler that is down drops due routines as `missed` instead of queueing them, silently.
+  # auto_restart: true     # spawn the daemon from the comms hook when it is not running.
+                           #   A deliberate `agent scheduler stop` writes a control gate that this
+                           #   switch RESPECTS — otherwise a stop would be undone within seconds by
+                           #   the next delegate tick. Clear it with `agent scheduler serve` or
+                           #   `agent stop --stage resume scheduler`.
+  # interval: 30           # seconds between ticks (5–3600). 30s means 09:30 fires at 09:30.
+#
+# Env equivalent (highest precedence): SCHEDULER_AUTO_RESTART.
+
+# Agent daemon PACEMAKER — the delegate's OWN clock. Not a process: `agent delegate <name>` already
+# runs a ~2s idle tick, and this block makes that tick self-inject a mission tick into the agent's
+# own mailbox once its sleep budget has elapsed. The loop then wakes on it exactly as it wakes on a
+# chat message, so there is no second daemon, no second pid file, and no second failure surface.
+# Inspect and steer one lane with `sidekicks agent daemon status|sleep|wake|reset <agent>`.
+#
+# ⚠ AFTER EVERY EDIT TO THIS BLOCK, RUN:  sidekicks agent daemon check <agent>
+#   Every way this block can be wrong is SILENT — an unknown key becomes the shipped default, a
+#   sleep_by_action value below min_sleep_seconds is clamped without comment, a column-0 line inserted
+#   mid-block truncates the reader's slice and drops everything after it, an &anchor/*alias/!!tag voids
+#   the whole block, and a lane declared under a misspelled agent name is dead config forever while
+#   `status` on the real lane still looks healthy. The pacemaker keeps ticking through all of it. The
+#   check exits 2 on anything you wrote that is not reaching the pacemaker, and 0 on advisory findings,
+#   so it is safe in a hook. The rules called out in the comments below are all things it enforces —
+#   read them for the reasoning, but rely on the check, not on remembering them.
+#
+# WHY THIS EXISTS. Autonomy used to come from a cron routine (`mission-tick`) fired by the scheduler
+# above, which made it depend on a THIRD process being alive: the scheduler was dead from 2026-07-27
+# to 2026-08-04 and every tick in that window was recorded `missed`, not queued — the agent stopped
+# thinking and nothing said so. Cron also fires at fixed instants regardless of what the agent had
+# just finished, so a tick could land seconds after a 40-minute wake. The pacemaker inverts both: the
+# clock lives in the process that does the waking (if the delegate is up, autonomy is up), and the
+# budget is measured from the END of the last wake.
+#
+# THE WOKEN AGENT SETS ITS OWN NEXT BUDGET as the last act of a wake:
+#   node bin/sidekicks agent daemon sleep <agent> --action <decider-action> --mission <MIS-id> --reason="<why>"
+# That request is ADVISORY and ONE-SHOT: it is clamped into min/max below, honoured for exactly the
+# next tick, then the lane reverts to default_sleep_seconds. A wake that never asks is not a stall —
+# it gets the default. Hard rails no config can cross: 60s floor, 7d ceiling.
+#
+# EVERY VALUE IS RE-READ ON EVERY TICK. Edit this file and the next tick already uses the new number
+# with no delegate restart — which is also why the numeric knobs have NO env or flag form (env is
+# fixed at process start). The only flag is `agent delegate --no-pacemaker`, which can turn it OFF
+# and never tune it.
+agent_daemon:
+  # Master switch, FLEET-WIDE. An absent block, `enabled: false`, or an UNPARSEABLE block all mean
+  # pacemaker OFF and the delegate behaves exactly as it did before this existed (purely
+  # event-driven). Off is the default in this EXAMPLE so upgrading a repo can never start spending
+  # tokens by itself, and a mis-parsed block stops the agent and says why instead of inventing a
+  # schedule nobody wrote.
+  #
+  # `enabled: true` here covers EVERY orchestrator with no per-agent entries at all: the pacemaker
+  # lives in the delegate, and by the one-delegate standing policy only an orchestrator charter may
+  # run one (a worker is refused), so a fleet-wide switch can never reach a lane that has no clock to
+  # set. Nothing in the mechanism is specific to one agent — the tick goal, the notify mailbox and
+  # every budget resolve per lane.
+  enabled: false
+  # A per-agent `enabled` WINS over this switch in both directions — that is how one lane opts in
+  # while the fleet stays off, and how one lane is exempted while the fleet is on.
+
+  # Fleet-wide defaults. Every key may be overridden per agent under `agents:`; the nested blocks
+  # (sleep_by_action, tick, quota, decision) merge KEY BY KEY rather than being replaced wholesale.
+  defaults:
+    # default_sleep_seconds: 3600   # budget when no request is pending (or it is stale/corrupt)
+    # min_sleep_seconds: 300        # floor. Below ~5 min a wake's ~40k-token bootstrap dominates and
+                                    #   the job belongs to a daemon, not a pacemaker.
+    # max_sleep_seconds: 43200      # ceiling (12h). Must be >= the largest sleep_by_action value.
+    # startup_grace_seconds: 120    # no injection this soon after the delegate starts — a lane
+                                    #   respawned by launchd must not tick before the comms hook has
+                                    #   brought the relay and scheduler back up.
+    # WORKING HOURS, Asia/Bangkok wall clock. Outside them the pacemaker never injects; chat messages
+    # and worker replies still wake the lane at any hour, because those are events, not ticks. This is
+    # the cost envelope the retired cron routine carried in its `0 10,14,17 * * 1-5` field — drop it
+    # and a lane thinks at 04:00 on Sunday for exactly the same money as Tuesday 11:00.
+    # active_hours: "06:00-21:00"   # one window
+    # active_hours: "06:00-12:00,13:00-21:00"   # SEVERAL, comma- or semicolon-separated: a split day
+    # active_hours: "22:00-06:00"   # wraps midnight
+    # active_hours: ""              # "" = 24h (the default)
+                                    #   A range whose ends match ("00:00-00:00") reads as 24h, since
+                                    #   that is what anyone writing it means. An unparseable range is
+                                    #   dropped with a warning and its siblings still apply; when NONE
+                                    #   parse the lane falls back to 24h rather than going silent.
+    # active_days: ""               # mon,tue,… ; "" = every day (same tokens as `agent routine`).
+    # max_ticks_per_day: 24         # HARD FUSE, per Bangkok calendar day, per lane. This is the one
+                                    #   number that bounds every remaining failure mode at once: a
+                                    #   laptop waking with a 6-hour clock jump, a pathological
+                                    #   sleep_seconds, and the restart-resets-the-failure-counter
+                                    #   treadmill. It lives in git-ignored runtime state and SURVIVES
+                                    #   a delegate restart precisely so a restart loop cannot reset
+                                    #   it. Treat it as a BUDGET, not a safety valve: every
+                                    #   antigravity wake is cold and pays a full bootstrap.
+    # pause_after_failures: 5       # hold self-injection after N consecutive FAILED wakes (nonzero
+                                    #   exit, max-runtime kill, or a zero-exit wake that drained
+                                    #   nothing). Exists because every undrainable tick scores a
+                                    #   failure, so an unbounded pacemaker would manufacture the exact
+                                    #   hot loop the delegate's backoff exists to contain.
+                                    #   DO NOT LOWER THIS BELOW 5. It is deliberately EQUAL to the
+                                    #   delegate's MAX_CONSECUTIVE_FAILURES, the count at which the
+                                    #   loop exits for its supervisor to restart it — the lane's only
+                                    #   autonomous recovery, since a fresh generation clears the
+                                    #   counter. A lower value looks safer and is worse: the pacemaker
+                                    #   is the lane's ONLY tick source, so holding at 1 starves the
+                                    #   wakes that would have carried the counter up to that exit, and
+                                    #   the lane sits alive and silent forever — no supervisor event,
+                                    #   nothing but a chat message to un-wedge it. At parity the
+                                    #   delegate exits first and the lane heals itself; the hot loop
+                                    #   stays contained meanwhile by the 30s→300s per-failure backoff.
+                                    #   A user chat message still wakes the lane at any count, and a
+                                    #   successful wake re-arms the gate.
+    # jitter_seconds: 0             # ± deterministic spread (agent name + baseline hash, never a
+                                    #   random source, so a dry run stays byte-reproducible). Exists
+                                    #   so a future multi-lane fleet does not wake in lockstep.
+    # log_heartbeat_minutes: 60     # one quiet-state line per N minutes. Skip lines are otherwise
+                                    #   printed only when the REASON changes — a 2s tick logging
+                                    #   every skip writes ~43k lines a day into a file you tail.
+    # wake_warn_after_seconds: 900  # log a LONG-WAKE warning (pid + elapsed) from the in-wake ticker.
+                                    #   A lane drains one wake at a time, so wake LENGTH — not wake
+                                    #   success — is the availability metric: an unbounded command
+                                    #   inside a wake is a lane outage (26 minutes, 2026-08-04).
+    # step_lease_seconds: 0         # 0 = derive from the lane's --max-runtime. The lease is what stops
+                                    #   two callers both stamping step.start on one mission step and
+                                    #   burning both of its two attempts in a single round.
+    #
+    # Decider action (`journal mission next <agent> --json`) → seconds to rest afterwards. THIS TABLE
+    # is why no skill and no charter carries a duration: the wake names the action it ran and the
+    # number is resolved here.
+    # sleep_by_action:
+    #   verify_step: 120            # a verdict is cheap and the next rung is usually execute_step
+    #   plan_steps: 300             # planning just finished — the first step is ready now
+    #   execute_step: 600           # the dispatch is out; the worker's own completion auto-reply
+    #                               #   already wakes this lane for free, so this is a fallback poll
+    #   close_mission: 300          # a DoD verdict is pending — come back for the user's answer
+    #   resume_blocked: 1800        # it is blocked; sooner just re-reads identical state
+    #   idle: 3600                  # the lane's true standby cadence, and its dominant token cost
+    #   user_reply: 900             # a chat exchange is live — stay responsive, briefly
+    #   await_approval: 7200        # a human owns it; polling faster spends tokens on nothing
+    #   propose_goal: 21600         # a proposal is out and the loop reminds at +24h anyway
+    #   consolidate_day: 43200      # the harvest is once a day
+    #   unknown: 3600               # the never-guess fallback for a wake that ran no decider action
+    #
+    # Human-decision cadence. Previously prose in the mission-loop skill; enforced from here now.
+    # decision:
+    #   remind_after_hours: 24      # one reminder on an unanswered proposal…
+    #   shelve_after_hours: 72      # …then shelve it with one closing signal, then silence.
+    #   max_signals_per_decision: 2 # ever. Each chat turn spends attention and invites a reply that
+    #                               #   costs another full wake.
+    #
+    # CLI quota / usage-limit handling. A quota wall is NOT a failure: without this a quota'd lane
+    # runs the generic backoff ladder (30/60/120/240/300s) and dies in ~12.5 minutes, while the
+    # user's message requeues three times and is then failed out with a misleading reply.
+    # quota:
+    #   enabled: true
+    #   default_cooldown_seconds: 3600  # used when the CLI names no reset instant
+    #   notify: true                    # one chat line at quota entry: paused until HH:MM
+    #   patterns: []                    # extra regexes merged over the built-in per-CLI set, so a
+    #                                   #   vendor wording change is a config edit, not a release
+    #
+    # The injected tick itself. It travels the normal `agent send` validation path, so `category`
+    # MUST be one the recipient's charter claims or every injection is refused at send time — which
+    # looks exactly like a pacemaker that never fired.
+    #
+    # `from: scheduler` is FIXED and deliberately NOT configurable. The charter and the
+    # sk-agent-mission-loop skill both route on it ("from scheduler → a routine tick, no human
+    # attached") and every safety floor in that skill hangs off it being unforgeable from chat. A
+    # `deliver: telegram` style sender arrives as `from: telegram`, which the same table classifies as
+    # USER-ORIGINATED — the tick would then be pushed through the dry-run plan gate as if a human had
+    # typed it. That is a live defect in the cron routine this replaces.
+    # tick:
+    #   category: orchestration
+    #   priority: 2
+    #   notify: auto                # DEFAULT, and the only value safe fleet-wide: each lane's OWN
+    #                               #   relay mailbox, resolved from the telegram channel table. The
+    #                               #   lanes do NOT share one — the default channel keeps the bare
+    #                               #   `telegram` mailbox while a named lane gets `telegram-<id>`, so
+    #                               #   `ethan` posts through `telegram` and `angely` through
+    #                               #   `telegram-angely`. Hardcoding either here would post every
+    #                               #   lane's tick reports into ONE agent's chat.
+    #                               #   An explicit mailbox overrides it; "" is silent; a lane with no
+    #                               #   channel row resolves to silent, which is right for a headless
+    #                               #   build lane.
+    #   goal: "…"                   # omit to use the shipped mission-tick wording
+    #   acceptance: "…"
+
+  # PER-AGENT OVERRIDES, merged key by key over `defaults` above.
+  #
+  # OPTIONAL. With `enabled: true` at the top, every orchestrator already runs the pacemaker on the
+  # defaults — an empty `agents: {}` is a complete configuration. List a lane here only to exempt it
+  # (`enabled: false`), retune one number for it, or declare its missions.
+  agents:
+    angely:
+      enabled: true
+      # default_sleep_seconds: 1800
+      # active_hours: "09:00-18:00"   # a lane may keep different working hours from the fleet
+      #
+      # DECLARED MISSIONS. Each entry is reconciled into a real L7 journal mission
+      # (`journal mission open`) and bound to its minted MIS- id through a git-ignored ledger, so
+      # re-running reconcile never opens a second copy. `id` is a STABLE SLUG you choose — it is the
+      # idempotency key, not a mission id.
+      #
+      # The journal's own cap (layers.mission.agents.<name>.max_active_per_agent, default 3) still
+      # applies: reconcile opens up to the cap in declaration order and REPORTS what it skipped
+      # rather than forcing past it. Note more concurrent missions is not more parallelism — the
+      # decider is rung-first, mission-second, so they compete for one ladder.
+      #
+      # `enabled: false` never opens the mission, and stops ticking one that is already live — it
+      # never CLOSES it, because closing needs a summary and is the store's push boundary.
+      # missions:
+      #   - id: self-improve            # slug: a-z0-9-, ≤40 chars, stable forever
+      #     enabled: true
+      #     title: "Angely self-improvement — think, act, report"
+      #     why: "the lane's own throughput is the bottleneck on everything it routes"
+      #     goal: "…what success looks like, in the user's words…"
+      #     dod: "…prose definition of done, written to the mission body…"
+      #     dod_checks:                 # objectively checkable; graded by an INDEPENDENT verifier
+      #       - "every proposed charter change is filed through sk-self-improve"
+      #       - "one measured before/after on wake token cost"
+      #     priority: 1                 # 1..5, feeds the decider's inter-mission ordering
+      #     standing: false             # a standing mission never terminates on DoD, by design
+      #     sleep_seconds: 1800         # per-mission budget, beats the agent default
+      #     sleep_by_action: {}         # per-mission table, beats everything
+  #
+  # ⚠ BLOCK FORM ONLY, and keep this whole block CONTIGUOUS. The reader slices this section from its
+  #   column-0 key to the next column-0 key, so a top-level line inserted in the middle truncates
+  #   everything after it. (On the real config file this block is delivered by that slice fallback,
+  #   not by the whole-file parse — so the rule is load-bearing, not decorative.)
+  # ⚠ No `&word`, `*word`, or `!!` anywhere in the goal/title/DoD text — the yaml subset rejects
+  #   anchors, aliases and tags even inside quotes, which would make this whole FILE unreadable
+  #   rather than just this block.
+
+# Agent Tray (sk-agent-tray, macOS menu-bar app) — per-agent DEFAULT head icons.
+# Effective icon precedence: live pick from the tray's Icon menu (machine-local
+# .sidekicks/agents/.bridge/runtime/tray.json) > this block > the built-in 🤖.
+agent_tray:
+  # Brought up automatically when the tray opens: agent names (headless delegate via
+  # `agent start --headless`) plus three special members — "orchestrators", "telegram" and
+  # "scheduler". Already-running members are left alone.
+  # Flow or block list form; omit the key (or launch with --no-autostart) to disable.
+  #
+  # "orchestrators" expands, where the token sits, to every ACTIVE orchestrator on the
+  # roster, resolved at tray open — so a lane you add next month starts with no config
+  # edit. Retired lanes and relay mailboxes are never expanded into, and a lane you also
+  # name by hand starts once. THIS IS THE RECOMMENDED SHAPE: a hand-listed set of lane
+  # names drifts behind the charter directory silently.
+  #
+  # "telegram" is ONE member however many lanes you run — there is a single relay process
+  # serving the whole channel table. Never list a `telegram-<lane>` mailbox agent here.
+  #
+  # "scheduler" starts the routine scheduler through the GATE-CLEARING path: `agent stop --all`
+  # and tray Quit leave a stop gate that _comms.mjs then honours forever, so without this a
+  # single Quit silently disables every scheduled routine (they are recorded `missed`, not
+  # queued). Pair it with `scheduler: auto_restart: true` above — that revives the daemon from
+  # any delegate's idle tick, i.e. when the tray is not running at all.
+  #
+  # A lane a LOADED LaunchAgent supervises (com.sidekicks.<agent>-delegate, KeepAlive) is
+  # skipped by both autostart and keepalive — the tray asks launchd, so you never maintain
+  # an exclusion here.
+  #
+  # ► FULL COPY-AND-EDIT SAMPLES: .sidekicks/config.agents.example.yaml — per-agent cli/model
+  #   (the tier table, and why there is no global default-cli key), four autostart shapes,
+  #   and what autostart vs keepalive actually do.
+  autostart: [telegram, scheduler, orchestrators]
+  icons:
+    ethan: 🧑‍✈️        # any emoji; key = agent name
+    gavin: 🛰️          # the second orchestrator lane (its own bot, own relay mailbox)
+    molly: 🧠

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  com.sidekicks.agent-tray.plist — macOS LaunchAgent TEMPLATE for the
+  Sidekicks Agent Tray (menu-bar app): starts at login, does NOT respawn —
+  "Quit Tray" must stick, so there is deliberately no KeepAlive.
+
+  Install (replaces the __REPO_ROOT__ tokens with your absolute repo path):
+
+    sed "s|__REPO_ROOT__|$(pwd)|g" scripts/launchd/com.sidekicks.agent-tray.plist \
+      > ~/Library/LaunchAgents/com.sidekicks.agent-tray.plist
+    launchctl bootstrap gui/$UID ~/Library/LaunchAgents/com.sidekicks.agent-tray.plist
+
+  Uninstall:
+    launchctl bootout gui/$UID/com.sidekicks.agent-tray
+
+  Notes:
+  - LimitLoadToSessionType Aqua: the tray needs a GUI login session (it draws
+    in the status bar) — never load it in ssh/background sessions.
+  - PATH carries the usual node locations: the tray's control actions shell
+    out to `node bin/sidekicks …` (agentwatch also falls back to
+    /opt/homebrew/bin/node and /usr/local/bin/node on its own).
+  - Logs go to the same git-ignored comms log dir the agent daemons use.
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.sidekicks.agent-tray</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>__REPO_ROOT__/.venv/bin/python</string>
+    <string>__REPO_ROOT__/.agents/skills/sk-agent-tray/scripts/agent_tray.py</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>__REPO_ROOT__</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>LimitLoadToSessionType</key>
+  <string>Aqua</string>
+  <key>StandardOutPath</key>
+  <string>__REPO_ROOT__/.sidekicks/agents/.bridge/runtime/logs/agent-tray.log</string>
+  <key>StandardErrorPath</key>
+  <string>__REPO_ROOT__/.sidekicks/agents/.bridge/runtime/logs/agent-tray.log</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <!-- launchd agents get a minimal PATH; node shims usually live in one of
+         these. Extend if your node install lives elsewhere. -->
+    <key>PATH</key>
+    <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+  </dict>
+</dict>
+</plist>

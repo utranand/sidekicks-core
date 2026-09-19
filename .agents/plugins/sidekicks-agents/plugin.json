@@ -1,0 +1,5 @@
+{
+  "name": "sidekicks-agents",
+  "description": "Sidekicks subagent ports generated from .agents/subagents",
+  "version": "1.0.0"
+}

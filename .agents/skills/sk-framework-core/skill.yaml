@@ -1,0 +1,44 @@
+# Framework rules extracted from AGENTS.md; each body travels with this skill.
+skill: sk-framework-core
+
+rules:
+  - id: criterion.session-practices
+    title: The ten standing session practices
+    body: rules/criterion.session-practices.md
+  - id: rule.cross-platform
+    title: One implementation running on macOS and Windows
+    body: rules/rule.cross-platform.md
+  - id: rule.branch-naming
+    title: Branch naming <type>/<key>-<slug>
+    body: rules/rule.branch-naming.md
+  - id: rule.lean-main-merge
+    title: Land tested work on main via the leanest safe path
+    body: rules/rule.lean-main-merge.md
+  - id: rule.single-venv
+    title: The single repo-root .venv only
+    body: rules/rule.single-venv.md
+  - id: rule.timezone-bangkok
+    title: Asia/Bangkok for all timestamps
+    body: rules/rule.timezone-bangkok.md
+  - id: rule.local-memory-register
+    title: Register durable decisions in local memory
+    body: rules/rule.local-memory-register.md
+  - id: criterion.memory-lazy-load
+    title: Load the memory category map at session start, bodies on trigger
+    body: rules/criterion.memory-lazy-load.md
+  - id: rule.incident-reports
+    title: Incident reports committed under the affected scope
+    body: rules/rule.incident-reports.md
+  - id: criterion.model-tier-substitution
+    title: Subagent model selection by tier
+    body: rules/criterion.model-tier-substitution.md
+  - id: rule.worktree-sibling-layout
+    title: Worktrees are siblings of the repo
+    body: rules/rule.worktree-sibling-layout.md
+
+config:
+  block: framework_core
+  family: skills
+  # A core is root-scoped; project configuration must never override it.
+  scope: root
+  defaults: config.defaults.yaml

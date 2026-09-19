@@ -1,0 +1,79 @@
+# {{RUNTIME_NAME}} — Lean Sidekicks core
+Generated from {{SOURCE_COMMIT}} on {{GENERATED_AT}}; replaced on re-forge.
+
+It runs two ways: **Mounted at `{{CORE_DIR}}/` by a workspace** — This tree is read-only;
+local instructions belong in the workspace's AGENTS.md, which moves to a newer runtime with `sidekicks core update`.
+Standalone: `node bin/sidekicks --help` needs no install; `core forge` produces a successor.
+Updates flow source→core→workspace; reconcile differences before overwriting.
+
+## Skills ({{SKILL_COUNT}})
+| Skill | Purpose |
+|---|---|
+{{SKILL_TABLE}}
+{{DELEGATE_SECTION}}
+
+## Boundary rules
+**Rule 1 — CLI Write Surface**
+The CLI mediates all structural writes. The CLI-managed write surface is `projects/<name>/`, `.sidekicks/`
+and `.agents/skills/`. Only `sidekicks` CLI verbs may create, modify, or delete files under these paths.
+`.agents/skills/` is named explicitly because the skills tree lives OUTSIDE `.sidekicks/`: it is the canonical
+skills location (Rule 3), and the rest of `.agents/` — the per-CLI plugin ports — is ordinary agent territory.
+
+**Rule 2 — Agent Free-Write Surface**
+The agent's free-write surface is bounded by the active scope:
+- Root project (`sidekicks`) active → repo root, excluding `.sidekicks/`, `.agents/skills/` and `projects/`
+- User project active → `projects/<active>/` only
+
+**Rule 3 — Skills Canonical Location**
+Skills are canonical at `.agents/skills/` — the CLI-neutral standard location, a real committed directory and
+never a link. Host-level exposure directories, one per supported agent CLI that does not read that path directly
+(`.claude/skills/`, `.agent/skills/`, `.gemini/skills/`) — are folder-level links pointing at `.agents/skills/`.
+They are git-ignored and self-healed by the CLI on every invocation (junction on Windows,
+symlink on POSIX; `lib/sk-cli/skill-links.mjs`), and are outside the framework's write scope.
+The parked tree `.sidekicks/skill-offloaded/` deliberately does NOT move: an offloaded skill must stay invisible
+to skill discovery, and parking it beside the canonical tree is exactly what a host CLI would pick up.
+
+**Rule 4 — Database Write Safety (Mandatory Permission & Transaction)**
+Before executing any command that modifies a database (including `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`, or `ALTER`/`DROP` DDL), or using the `--confirm-write` flag, the agent **MUST** obtain explicit user permission. This rule applies even in YOLO/Autonomous mode. Describe the intended modification and wait for user confirmation before proceeding. **All execution on a live database MUST be performed within a transaction scope and be capable of rolling back upon error to protect the database.**
+
+**Rule 5 — Empirical Verification (No Assumptions)**
+Before proposing schema changes, reporting on data characteristics, or making technical claims about file contents, the agent **MUST** perform empirical verification (e.g., `grep` scans, SQL queries, targeted `read_file`). Never assume limits or requirements based on intuition or partial headers; always ground suggestions in concrete evidence found within the active project.
+
+**Rule 6 — Multi-CLI Parity (instructions canonical at AGENTS.md)**
+The repo **MUST** work identically across every supported agent CLI — Claude Code, Codex CLI, Gemini CLI, Antigravity, and any CLI added later — switching CLIs must never lose instructions, skills, hooks, subagents, or memory. The project is a **generic CLI host**: it persists model tiers and required capabilities, never a project-wide provider or model default. Runtime selection prefers the current host CLI when it is eligible, then uses capability, tier, containment and availability checks with a stable provider-neutral fallback. Only an individual agent charter or an explicit one-off invocation may pin a CLI executor. Instructions are canonical at `AGENTS.md`; shared hooks and subagents likewise have CLI-neutral canonical sources, while each supported CLI receives a committed adapter in its native format. Every CLI **inherits** shared surfaces, never carries a divergent copy: instructions via the `CLAUDE.md`/`GEMINI.md` symlinks to `AGENTS.md`, skills via the Rule 3 exposure links to `.agents/skills/`, and hooks/subagents via their per-CLI ports. Claude Code remains fully supported as a peer adapter, not the project default. Any change to a shared surface **MUST** propagate to all supported CLIs in the same change, and every script involved **MUST** run on both macOS and Windows. Parity is enforced by `lib/framework-lifecycle/tests/multi-cli-parity.test.mjs` and `lib/framework-lifecycle/tests/agent-context-mirror.test.mjs` — colocated under `lib/` so they travel into a forged core and a consumer can check its OWN wiring; the maintenance contract (parity matrix, per-surface checklists, how to add a new CLI) is `docs/guide/pending-update/multi-cli-compatibility.md`.
+
+## Consent gates
+- **Production access — direct only, never Teleport:** use direct access; every production write still requires explicit consent under Rule 4.
+- **Protected branches — explicit waiver required:** resolve each written path to its nearest owning
+  Git worktree. An enclosing repo with only a dirty gitlink may stay protected; parent-owned metadata or artifacts
+  add that parent to the checked set. Use a work branch for main/sit/uat/staging/prod/release/*
+  unless the user explicitly names both the paths and protected branch.
+- **Irreversible / outward-facing actions:** confirm pushes, publishing, deployments, external sends
+  and shared deletions. Reuse verified user grants only within their scope. Only configured-channel
+  run reporting has a standing send exemption.
+- Logged-in Google automation is **headful only**.
+- Project memory is **LOCAL-ONLY**: use `sidekicks memory`, never a host/global memory store.
+- **Portable paths:** persist relative paths only. **Secret-bearing manifests** stay git-ignored,
+  never committed under artifacts/.
+- Worktree force removal only after the user OKs unmerged loss. Ask before adding a worktree or
+  switching a dirty checkout. Never stash/reset/restore/clean others' work. Link dependencies;
+  run tests/builds in the primary checkout.
+- Safety-softening, unverified or non-reversible auditor changes are
+  parked for a human — never auto-applied.
+
+Tasks authorize scoped work; review does not authorize implementation. Unattended gates stay
+pending. Settings cannot disable the safety floor.
+
+## Scope
+**Three anchors:** align supplied paths to scope first; resolve code with `sidekicks scope working-folder`
+and output with `sidekicks scope run-base <skill-id> [<work-item>]`.
+work_dir overrides; docs_dir/artifacts_dir never change scope. Run output never belongs in docs/ or src/.
+Missing config uses defaults; only `sidekicks config` reads/writes values.
+{{PYTHON_SECTION}}
+
+## Rule bodies
+Read applicable bodies: `sidekicks framework show <id>`. List with `framework list`;
+`framework enable|disable <id>` controls non-floor entries. Missing bodies fail verification.
+{{RULE_POINTER_TABLE}}
+
+Optional host plugins: caveman compresses prose; ponytail guides code. Disable either in host plugin settings.

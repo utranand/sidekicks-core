@@ -1,0 +1,19 @@
+{
+  "files": [
+    "theme-values.js",
+    "_shared/00-theme-shell.js",
+    "_shared/10-helpers-textures.js",
+    "_shared/20-scene-layout.js",
+    "_shared/30-world-house.js",
+    "_shared/35-room-assets.js",
+    "_shared/40-lamps-furniture.js",
+    "_shared/45-room-designer.js",
+    "_shared/50-officers-thoughts.js",
+    "_shared/60-movement-behavior.js",
+    "_shared/70-weather-day-night.js",
+    "_shared/80-camera-interaction-panel.js",
+    "_shared/82-minimap-overlay.js",
+    "_shared/85-fireworks-celebration.js",
+    "_shared/90-animation-live-updates.js"
+  ]
+}

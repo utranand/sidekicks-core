@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  com.sidekicks.agent-delegate.plist — macOS LaunchAgent TEMPLATE for ANY
+  orchestrator lane's delegate runner (always-on: starts at login, respawns on
+  crash/exit).
+
+  ONE template, N lanes. Do not copy-edit it per agent — use the installer,
+  which fills __AGENT__ and __REPO_ROOT__ and produces the label the agent tray
+  already expects (`com.sidekicks.<agent>-delegate`, see launchd_label() in
+  .agents/skills/sk-agent-tray/scripts/agentwatch.py):
+
+    scripts/install-delegate-launchagent.sh <agent>
+    scripts/install-delegate-launchagent.sh <agent> --uninstall
+
+  Notes:
+  - KeepAlive respawns the delegate if it exits (including its deliberate
+    exit-1 after 5 consecutive failed wakes — launchd applies its own
+    restart throttle, so this never becomes a hot loop).
+  - `sidekicks agent stop <agent>` still stops the LOOP gracefully, but KeepAlive
+    brings a fresh one back; to stop for good, bootout the LaunchAgent.
+  - A lane under KeepAlive is ALSO in the tray's autostart keepalive if you list
+    it there — pick one supervisor, not both.
+  - Logs go to the same git-ignored comms log dir the runner uses when
+    launched by hand.
+  - Windows equivalent (docs-only): schtasks /create /sc onlogon /tn
+    "sidekicks-<agent>-delegate" /tr "node <repo>\bin\sidekicks agent delegate <agent>"
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.sidekicks.__AGENT__-delegate</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>__NODE__</string>
+    <string>__REPO_ROOT__/bin/sidekicks</string>
+    <string>agent</string>
+    <string>delegate</string>
+    <string>__AGENT__</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>__REPO_ROOT__</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>__REPO_ROOT__/.sidekicks/agents/.bridge/runtime/logs/delegate-__AGENT__.log</string>
+  <key>StandardErrorPath</key>
+  <string>__REPO_ROOT__/.sidekicks/agents/.bridge/runtime/logs/delegate-__AGENT__.log</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <!-- launchd agents get a minimal PATH and load NO shell profile, and the
+         delegate spawns `claude` with no shell — so if the binary is not on this
+         exact PATH, EVERY wake fails with a missing binary.
+
+         CHECK THIS BEFORE INSTALLING. Two traps hit in practice:
+           - `claude` is often a shell FUNCTION in an interactive profile while
+             the real executable lives in $HOME/.local/bin (the official
+             installer's default). `command -v claude` inside
+             `env -i PATH=... sh -c` tells you the truth; `which claude` in your
+             own shell does not.
+           - node may be at /opt/homebrew/bin (Apple silicon Homebrew) rather
+             than /usr/local/bin — the installer resolves `command -v node` for
+             you and writes it into ProgramArguments.
+
+         launchd does NOT expand $HOME here, so an absolute path is required;
+         the installer prepends $HOME/.local/bin for exactly the claude case. -->
+    <key>PATH</key>
+    <string>__PATH__</string>
+  </dict>
+</dict>
+</plist>
