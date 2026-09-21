@@ -84,7 +84,12 @@ const DOMAIN_SIGNALS = [
 // skill that owns a write under a project scope. Audited against the installed skill list: an
 // alternative matching no skill (`sk-service-implementer`, which is a subagent) is dead weight
 // that reads as coverage. Names that already hit DOMAIN_SIGNALS are kept for legibility, not need.
-const IMPLEMENTING_SKILLS = /^(sk-bmad-developer|sk-get-things-done|sk-get-plan-done|sk-jira-autopilot|sk-get-jira-done|sk-commander|sk-implementation-planner|sk-framework-dev|sk-fable-mission|sk-squad|sk-loop-fleet|sk-security-remediation|sk-git-ship|sk-worktree-integrate|sk-shp-|sk-database-|sk-safe-data-importer|sk-cluster-ops|sk-argocd-ops)/;
+//
+// The native delivery route is here on the same test as the BMAD one: `sk-developer` writes code
+// under a project, and `sk-design-author` makes the decisions a project's TTSR entries exist to
+// correct. `sk-spec-planner` and `sk-code-review` are deliberately absent — the first states what
+// must be true and the second only reads, so neither owns a write the register could pre-empt.
+const IMPLEMENTING_SKILLS = /^(sk-bmad-developer|sk-developer|sk-design-author|sk-get-things-done|sk-get-plan-done|sk-jira-autopilot|sk-get-jira-done|sk-commander|sk-implementation-planner|sk-framework-dev|sk-fable-mission|sk-squad|sk-loop-fleet|sk-security-remediation|sk-git-ship|sk-worktree-integrate|sk-shp-|sk-database-|sk-safe-data-importer|sk-cluster-ops|sk-argocd-ops)/;
 
 function domainsFor({ skill, command }) {
   const hay = [skill || '', command || ''].join(' ');

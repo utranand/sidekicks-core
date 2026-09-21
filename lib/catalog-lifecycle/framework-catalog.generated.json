@@ -1649,7 +1649,7 @@
         "owners": [
           "sk-capture-web-views"
         ],
-        "body_at": ".agents/skills/sk-capture-web-views/rules/criterion.capture-notes-separate-brief.md",
+        "body_at": ".sidekicks/skill-offloaded/sk-capture-web-views/rules/criterion.capture-notes-separate-brief.md",
         "body_marker": null,
         "script": null,
         "floor": false,
@@ -2120,7 +2120,7 @@
           "sk-implementation-planner",
           "sk-jira-autopilot"
         ],
-        "body_at": ".agents/skills/sk-bmad-pm/rules/rule.bmad-first.md",
+        "body_at": ".agents/skills/sk-implementation-planner/rules/rule.bmad-first.md",
         "body_marker": null,
         "script": null,
         "floor": false,
@@ -2442,10 +2442,10 @@
     ]
   },
   "skills": {
-    "active_count": 133,
-    "parked_count": 18,
-    "edge_count": 148,
-    "hard_edge_count": 114,
+    "active_count": 107,
+    "parked_count": 34,
+    "edge_count": 146,
+    "hard_edge_count": 106,
     "mutual_composition": [
       {
         "cycle": [
@@ -2529,122 +2529,12 @@
         "informational_refs": []
       },
       {
-        "id": "code-to-design",
-        "folder": "code-to-design",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "code-to-design",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "design-md",
-        "folder": "design-md",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "design-md",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "enhance-prompt",
-        "folder": "enhance-prompt",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "enhance-prompt",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "extract-design-md",
-        "folder": "extract-design-md",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "extract-design-md",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "extract-static-html",
-        "folder": "extract-static-html",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "extract-static-html",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
         "id": "fable-mind",
         "folder": "fable-mind",
         "tree": ".agents/skills",
         "descriptor": true,
         "manifest": true,
         "logical_id": "fable-mind",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "generate-design",
-        "folder": "generate-design",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "generate-design",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "manage-design-system",
-        "folder": "manage-design-system",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "manage-design-system",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "react-components",
-        "folder": "react-components",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "react-components",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "react-native",
-        "folder": "react-native",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "react-native",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "remotion",
-        "folder": "remotion",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "remotion",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "shadcn-ui",
-        "folder": "shadcn-ui",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "shadcn-ui",
         "hard_depends_on": [],
         "informational_refs": []
       },
@@ -2735,16 +2625,6 @@
         "informational_refs": []
       },
       {
-        "id": "sk-api-cartographer",
-        "folder": "sk-api-cartographer",
-        "tree": ".agents/skills",
-        "descriptor": false,
-        "manifest": true,
-        "logical_id": "sk-api-cartographer",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
         "id": "sk-architect-rules",
         "folder": "sk-architect-rules",
         "tree": ".agents/skills",
@@ -2809,51 +2689,6 @@
         "informational_refs": []
       },
       {
-        "id": "sk-bmad-create-architecture",
-        "folder": "sk-bmad-create-architecture",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "sk-bmad-create-architecture",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "sk-bmad-developer",
-        "folder": "sk-bmad-developer",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "sk-bmad-developer",
-        "hard_depends_on": [],
-        "informational_refs": [
-          "sk-forge-project-behavior"
-        ]
-      },
-      {
-        "id": "sk-bmad-pm",
-        "folder": "sk-bmad-pm",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "sk-bmad-pm",
-        "hard_depends_on": [
-          "sk-bmad-create-story",
-          "sk-bmad-epic-tech-context"
-        ],
-        "informational_refs": []
-      },
-      {
-        "id": "sk-capture-web-views",
-        "folder": "sk-capture-web-views",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "sk-capture-web-views",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
         "id": "sk-cli",
         "folder": "sk-cli",
         "tree": ".agents/skills",
@@ -2894,6 +2729,16 @@
         "descriptor": true,
         "manifest": true,
         "logical_id": "sk-cluster-ops",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "sk-code-review",
+        "folder": "sk-code-review",
+        "tree": ".agents/skills",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-code-review",
         "hard_depends_on": [],
         "informational_refs": []
       },
@@ -3006,6 +2851,26 @@
         "informational_refs": []
       },
       {
+        "id": "sk-design-author",
+        "folder": "sk-design-author",
+        "tree": ".agents/skills",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-design-author",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "sk-developer",
+        "folder": "sk-developer",
+        "tree": ".agents/skills",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-developer",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
         "id": "sk-fable-council",
         "folder": "sk-fable-council",
         "tree": ".agents/skills",
@@ -3085,9 +2950,6 @@
           "sk-sequence-planner"
         ],
         "informational_refs": [
-          "sk-bmad-code-review",
-          "sk-bmad-developer",
-          "sk-bmad-pm",
           "sk-forge-project-behavior"
         ]
       },
@@ -3173,9 +3035,8 @@
           "sk-sequence-planner"
         ],
         "informational_refs": [
-          "sk-bmad-create-architecture",
-          "sk-bmad-developer",
-          "sk-bmad-validate-architect"
+          "sk-code-review",
+          "sk-developer"
         ]
       },
       {
@@ -3188,16 +3049,6 @@
         "hard_depends_on": [
           "sk-validation-gate"
         ],
-        "informational_refs": []
-      },
-      {
-        "id": "sk-interaction-recorder",
-        "folder": "sk-interaction-recorder",
-        "tree": ".agents/skills",
-        "descriptor": false,
-        "manifest": true,
-        "logical_id": "sk-interaction-recorder",
-        "hard_depends_on": [],
         "informational_refs": []
       },
       {
@@ -3227,7 +3078,8 @@
           "sk-jira-ready-gate"
         ],
         "informational_refs": [
-          "sk-bmad-pm",
+          "sk-code-review",
+          "sk-developer",
           "sk-forge-project-behavior"
         ]
       },
@@ -3239,18 +3091,6 @@
         "manifest": true,
         "logical_id": "sk-jira-connector",
         "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "sk-jira-epic-report",
-        "folder": "sk-jira-epic-report",
-        "tree": ".agents/skills",
-        "descriptor": false,
-        "manifest": true,
-        "logical_id": "sk-jira-epic-report",
-        "hard_depends_on": [
-          "sk-jira-connector"
-        ],
         "informational_refs": []
       },
       {
@@ -3335,7 +3175,7 @@
           "sk-jira-footprint"
         ],
         "informational_refs": [
-          "sk-bmad-create-architecture"
+          "sk-design-author"
         ]
       },
       {
@@ -3347,21 +3187,6 @@
         "logical_id": "sk-jira-rules",
         "hard_depends_on": [
           "sk-validation-gate"
-        ],
-        "informational_refs": []
-      },
-      {
-        "id": "sk-jira-subtask-consolidator",
-        "folder": "sk-jira-subtask-consolidator",
-        "tree": ".agents/skills",
-        "descriptor": false,
-        "manifest": true,
-        "logical_id": "sk-jira-subtask-consolidator",
-        "hard_depends_on": [
-          "sk-jira-connector",
-          "sk-jira-footprint",
-          "sk-jira-ready-gate",
-          "sk-jira-subtask-planner"
         ],
         "informational_refs": []
       },
@@ -3383,7 +3208,7 @@
           "sk-jira-ready-gate"
         ],
         "informational_refs": [
-          "sk-bmad-create-architecture"
+          "sk-design-author"
         ]
       },
       {
@@ -3420,16 +3245,6 @@
         "hard_depends_on": [
           "sk-cli-executor"
         ],
-        "informational_refs": []
-      },
-      {
-        "id": "sk-office-viz",
-        "folder": "sk-office-viz",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "sk-office-viz",
-        "hard_depends_on": [],
         "informational_refs": []
       },
       {
@@ -3493,16 +3308,6 @@
           "sk-commander",
           "sk-database-rules"
         ],
-        "informational_refs": []
-      },
-      {
-        "id": "sk-scan-ui-design",
-        "folder": "sk-scan-ui-design",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "sk-scan-ui-design",
-        "hard_depends_on": [],
         "informational_refs": []
       },
       {
@@ -3706,6 +3511,16 @@
         "informational_refs": []
       },
       {
+        "id": "sk-spec-planner",
+        "folder": "sk-spec-planner",
+        "tree": ".agents/skills",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-spec-planner",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
         "id": "sk-squad",
         "folder": "sk-squad",
         "tree": ".agents/skills",
@@ -3756,18 +3571,6 @@
         "manifest": true,
         "logical_id": "sk-test-gate",
         "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "sk-ui-change-briefer",
-        "folder": "sk-ui-change-briefer",
-        "tree": ".agents/skills",
-        "descriptor": false,
-        "manifest": true,
-        "logical_id": "sk-ui-change-briefer",
-        "hard_depends_on": [
-          "sk-capture-web-views"
-        ],
         "informational_refs": []
       },
       {
@@ -3838,56 +3641,6 @@
       {
         "id": "skill:sk-agent-standby",
         "folder": "sk-agent-standby",
-        "tree": ".agents/skills",
-        "descriptor": false,
-        "manifest": false,
-        "logical_id": null,
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "skill:sk-bmad-code-review",
-        "folder": "sk-bmad-code-review",
-        "tree": ".agents/skills",
-        "descriptor": false,
-        "manifest": false,
-        "logical_id": null,
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "skill:sk-bmad-create-story",
-        "folder": "sk-bmad-create-story",
-        "tree": ".agents/skills",
-        "descriptor": false,
-        "manifest": false,
-        "logical_id": null,
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "skill:sk-bmad-epic-tech-context",
-        "folder": "sk-bmad-epic-tech-context",
-        "tree": ".agents/skills",
-        "descriptor": false,
-        "manifest": false,
-        "logical_id": null,
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "skill:sk-bmad-validate-architect",
-        "folder": "sk-bmad-validate-architect",
-        "tree": ".agents/skills",
-        "descriptor": false,
-        "manifest": false,
-        "logical_id": null,
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "skill:sk-bmad-validate-prd",
-        "folder": "sk-bmad-validate-prd",
         "tree": ".agents/skills",
         "descriptor": false,
         "manifest": false,
@@ -4014,36 +3767,6 @@
         "logical_id": null,
         "hard_depends_on": [],
         "informational_refs": []
-      },
-      {
-        "id": "stitch-loop",
-        "folder": "stitch-loop",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "stitch-loop",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "taste-design",
-        "folder": "taste-design",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "taste-design",
-        "hard_depends_on": [],
-        "informational_refs": []
-      },
-      {
-        "id": "upload-to-stitch",
-        "folder": "upload-to-stitch",
-        "tree": ".agents/skills",
-        "descriptor": true,
-        "manifest": true,
-        "logical_id": "upload-to-stitch",
-        "hard_depends_on": [],
-        "informational_refs": []
       }
     ],
     "parked": [
@@ -4074,6 +3797,62 @@
         "descriptor": true,
         "manifest": true,
         "logical_id": "deploy-android-wireless",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "sk-api-cartographer",
+        "folder": "sk-api-cartographer",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": false,
+        "manifest": true,
+        "logical_id": "sk-api-cartographer",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "sk-bmad-create-architecture",
+        "folder": "sk-bmad-create-architecture",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-bmad-create-architecture",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "sk-bmad-developer",
+        "folder": "sk-bmad-developer",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-bmad-developer",
+        "hard_depends_on": [],
+        "informational_refs": [
+          "sk-forge-project-behavior"
+        ]
+      },
+      {
+        "id": "sk-bmad-pm",
+        "folder": "sk-bmad-pm",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-bmad-pm",
+        "hard_depends_on": [
+          "sk-bmad-create-story",
+          "sk-bmad-epic-tech-context",
+          "sk-sequence-planner"
+        ],
+        "informational_refs": []
+      },
+      {
+        "id": "sk-capture-web-views",
+        "folder": "sk-capture-web-views",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-capture-web-views",
         "hard_depends_on": [],
         "informational_refs": []
       },
@@ -4157,12 +3936,69 @@
         "informational_refs": []
       },
       {
+        "id": "sk-interaction-recorder",
+        "folder": "sk-interaction-recorder",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": false,
+        "manifest": true,
+        "logical_id": "sk-interaction-recorder",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "sk-jira-epic-report",
+        "folder": "sk-jira-epic-report",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": false,
+        "manifest": true,
+        "logical_id": "sk-jira-epic-report",
+        "hard_depends_on": [
+          "sk-jira-connector"
+        ],
+        "informational_refs": []
+      },
+      {
+        "id": "sk-jira-subtask-consolidator",
+        "folder": "sk-jira-subtask-consolidator",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": false,
+        "manifest": true,
+        "logical_id": "sk-jira-subtask-consolidator",
+        "hard_depends_on": [
+          "sk-jira-connector",
+          "sk-jira-footprint",
+          "sk-jira-ready-gate",
+          "sk-jira-subtask-planner"
+        ],
+        "informational_refs": []
+      },
+      {
         "id": "sk-nanobanana-generator",
         "folder": "sk-nanobanana-generator",
         "tree": ".sidekicks/skill-offloaded",
         "descriptor": true,
         "manifest": true,
         "logical_id": "sk-nanobanana-generator",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "sk-office-viz",
+        "folder": "sk-office-viz",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-office-viz",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "sk-scan-ui-design",
+        "folder": "sk-scan-ui-design",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-scan-ui-design",
         "hard_depends_on": [],
         "informational_refs": []
       },
@@ -4222,6 +4058,18 @@
         "informational_refs": []
       },
       {
+        "id": "sk-ui-change-briefer",
+        "folder": "sk-ui-change-briefer",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": false,
+        "manifest": true,
+        "logical_id": "sk-ui-change-briefer",
+        "hard_depends_on": [
+          "sk-capture-web-views"
+        ],
+        "informational_refs": []
+      },
+      {
         "id": "sk-watermark-replacer",
         "folder": "sk-watermark-replacer",
         "tree": ".sidekicks/skill-offloaded",
@@ -4238,6 +4086,56 @@
         "descriptor": true,
         "manifest": true,
         "logical_id": "sk-youtube-automator",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "skill:sk-bmad-code-review",
+        "folder": "sk-bmad-code-review",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": false,
+        "manifest": false,
+        "logical_id": null,
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "skill:sk-bmad-create-story",
+        "folder": "sk-bmad-create-story",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": false,
+        "manifest": false,
+        "logical_id": null,
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "skill:sk-bmad-epic-tech-context",
+        "folder": "sk-bmad-epic-tech-context",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": false,
+        "manifest": false,
+        "logical_id": null,
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "skill:sk-bmad-validate-architect",
+        "folder": "sk-bmad-validate-architect",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": false,
+        "manifest": false,
+        "logical_id": null,
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "skill:sk-bmad-validate-prd",
+        "folder": "sk-bmad-validate-prd",
+        "tree": ".sidekicks/skill-offloaded",
+        "descriptor": false,
+        "manifest": false,
+        "logical_id": null,
         "hard_depends_on": [],
         "informational_refs": []
       }
@@ -4304,7 +4202,7 @@
         "how": "subprocess",
         "kind": "informational",
         "acquisition": false,
-        "parked_source": false
+        "parked_source": true
       },
       {
         "from": "sk-bmad-pm",
@@ -4313,7 +4211,7 @@
         "how": "handoff",
         "kind": "hard",
         "acquisition": false,
-        "parked_source": false
+        "parked_source": true
       },
       {
         "from": "sk-bmad-pm",
@@ -4322,7 +4220,16 @@
         "how": "handoff",
         "kind": "hard",
         "acquisition": false,
-        "parked_source": false
+        "parked_source": true
+      },
+      {
+        "from": "sk-bmad-pm",
+        "from_folder": "sk-bmad-pm",
+        "to_folder": "sk-sequence-planner",
+        "how": "subprocess",
+        "kind": "hard",
+        "acquisition": false,
+        "parked_source": true
       },
       {
         "from": "sk-cinema-builder",
@@ -4579,33 +4486,6 @@
       {
         "from": "sk-get-plan-done",
         "from_folder": "sk-get-plan-done",
-        "to_folder": "sk-bmad-code-review",
-        "how": "handoff",
-        "kind": "informational",
-        "acquisition": false,
-        "parked_source": false
-      },
-      {
-        "from": "sk-get-plan-done",
-        "from_folder": "sk-get-plan-done",
-        "to_folder": "sk-bmad-developer",
-        "how": "subprocess",
-        "kind": "informational",
-        "acquisition": false,
-        "parked_source": false
-      },
-      {
-        "from": "sk-get-plan-done",
-        "from_folder": "sk-get-plan-done",
-        "to_folder": "sk-bmad-pm",
-        "how": "subprocess",
-        "kind": "informational",
-        "acquisition": false,
-        "parked_source": false
-      },
-      {
-        "from": "sk-get-plan-done",
-        "from_folder": "sk-get-plan-done",
         "to_folder": "sk-commander",
         "how": "handoff",
         "kind": "hard",
@@ -4840,7 +4720,7 @@
       {
         "from": "sk-implementation-planner",
         "from_folder": "sk-implementation-planner",
-        "to_folder": "sk-bmad-create-architecture",
+        "to_folder": "sk-code-review",
         "how": "handoff",
         "kind": "informational",
         "acquisition": false,
@@ -4849,16 +4729,7 @@
       {
         "from": "sk-implementation-planner",
         "from_folder": "sk-implementation-planner",
-        "to_folder": "sk-bmad-developer",
-        "how": "subprocess",
-        "kind": "informational",
-        "acquisition": false,
-        "parked_source": false
-      },
-      {
-        "from": "sk-implementation-planner",
-        "from_folder": "sk-implementation-planner",
-        "to_folder": "sk-bmad-validate-architect",
+        "to_folder": "sk-developer",
         "how": "handoff",
         "kind": "informational",
         "acquisition": false,
@@ -4912,8 +4783,17 @@
       {
         "from": "sk-jira-autopilot",
         "from_folder": "sk-jira-autopilot",
-        "to_folder": "sk-bmad-pm",
-        "how": "subprocess",
+        "to_folder": "sk-code-review",
+        "how": "handoff",
+        "kind": "informational",
+        "acquisition": false,
+        "parked_source": false
+      },
+      {
+        "from": "sk-jira-autopilot",
+        "from_folder": "sk-jira-autopilot",
+        "to_folder": "sk-developer",
+        "how": "handoff",
         "kind": "informational",
         "acquisition": false,
         "parked_source": false
@@ -4961,7 +4841,7 @@
         "how": "subprocess",
         "kind": "hard",
         "acquisition": false,
-        "parked_source": false
+        "parked_source": true
       },
       {
         "from": "sk-jira-footprint",
@@ -5047,15 +4927,6 @@
       {
         "from": "sk-jira-ready-gate",
         "from_folder": "sk-jira-ready-gate",
-        "to_folder": "sk-bmad-create-architecture",
-        "how": "handoff",
-        "kind": "informational",
-        "acquisition": false,
-        "parked_source": false
-      },
-      {
-        "from": "sk-jira-ready-gate",
-        "from_folder": "sk-jira-ready-gate",
         "to_folder": "sk-confluence-connector",
         "how": "subprocess",
         "kind": "hard",
@@ -5068,6 +4939,15 @@
         "to_folder": "sk-database-analyst",
         "how": "handoff",
         "kind": "hard",
+        "acquisition": false,
+        "parked_source": false
+      },
+      {
+        "from": "sk-jira-ready-gate",
+        "from_folder": "sk-jira-ready-gate",
+        "to_folder": "sk-design-author",
+        "how": "handoff",
+        "kind": "informational",
         "acquisition": false,
         "parked_source": false
       },
@@ -5141,7 +5021,7 @@
         "how": "subprocess",
         "kind": "hard",
         "acquisition": false,
-        "parked_source": false
+        "parked_source": true
       },
       {
         "from": "sk-jira-subtask-consolidator",
@@ -5150,7 +5030,7 @@
         "how": "subprocess",
         "kind": "hard",
         "acquisition": false,
-        "parked_source": false
+        "parked_source": true
       },
       {
         "from": "sk-jira-subtask-consolidator",
@@ -5159,7 +5039,7 @@
         "how": "subprocess",
         "kind": "hard",
         "acquisition": false,
-        "parked_source": false
+        "parked_source": true
       },
       {
         "from": "sk-jira-subtask-consolidator",
@@ -5168,16 +5048,7 @@
         "how": "handoff",
         "kind": "hard",
         "acquisition": false,
-        "parked_source": false
-      },
-      {
-        "from": "sk-jira-subtask-planner",
-        "from_folder": "sk-jira-subtask-planner",
-        "to_folder": "sk-bmad-create-architecture",
-        "how": "handoff",
-        "kind": "informational",
-        "acquisition": false,
-        "parked_source": false
+        "parked_source": true
       },
       {
         "from": "sk-jira-subtask-planner",
@@ -5194,6 +5065,15 @@
         "to_folder": "sk-database-data-importer",
         "how": "handoff",
         "kind": "hard",
+        "acquisition": false,
+        "parked_source": false
+      },
+      {
+        "from": "sk-jira-subtask-planner",
+        "from_folder": "sk-jira-subtask-planner",
+        "to_folder": "sk-design-author",
+        "how": "handoff",
+        "kind": "informational",
         "acquisition": false,
         "parked_source": false
       },
@@ -5537,7 +5417,7 @@
         "how": "subprocess",
         "kind": "hard",
         "acquisition": false,
-        "parked_source": false
+        "parked_source": true
       },
       {
         "from": "sk-validation-gate",
@@ -6276,7 +6156,7 @@
         "scope": "any",
         "inherits_root": false,
         "merge": "per_key",
-        "defaults": ".agents/skills/sk-office-viz/config.defaults.yaml",
+        "defaults": ".sidekicks/skill-offloaded/sk-office-viz/config.defaults.yaml",
         "source": "skill"
       },
       {
@@ -6352,7 +6232,7 @@
         "scope": "any",
         "inherits_root": false,
         "merge": "per_key",
-        "defaults": ".agents/skills/sk-scan-ui-design/config.defaults.yaml",
+        "defaults": ".sidekicks/skill-offloaded/sk-scan-ui-design/config.defaults.yaml",
         "source": "skill"
       },
       {

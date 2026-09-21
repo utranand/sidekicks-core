@@ -207,6 +207,49 @@ jira:
   - sk-jira-my-work
   - sk-jira-rules
 
+# THE NATIVE DELIVERY SUITE — the BMAD lifecycle's replacement, and `bmad:`'s counterpart below.
+# spec -> design -> build -> independent review, with the stages owned by four skills instead of one
+# family: sk-spec-planner writes the specification and the sliced delivery plan, sk-design-author
+# grounds the technical design in the code that exists, sk-developer builds ONE slice and reports,
+# and sk-code-review judges the candidate and CANNOT fix what it finds.
+#
+# A BUNDLE IS NOT AN ENGINE. These four write and judge artifacts; nothing here owns a queue, a
+# mission ledger or execution state. Compose with `delivery` or `goal` for a runtime that also RUNS
+# the work — `--preset native-delivery,goal` is the full autonomous shape.
+#
+# DEPENDENCY-CLOSED, LISTED IN FULL. A static preset is a literal --skills list (select.mjs pushes
+# its members verbatim and closes nothing), so every transitive member is spelled out here rather
+# than left to a resolver that will not run. The last three are not delivery skills and are not
+# decoration: sk-validation-gate reaches sk-database-rules and sk-jira-rules by handoff, and
+# sk-database-rules imports sk-database-connector. Drop any one and the runtime forges with a
+# MISSING DEP.
+#
+# NO sk-bmad-* MEMBER, and the closure proves it rather than the comment asserting it — the four
+# native skills declare no sibling at all, guarded by tests/skills/native-delivery-skills.test.mjs.
+# That guard is load-bearing: ONE declared sibling on sk-get-things-done drags in 7 sk-bmad-* skills,
+# because a sibling edge carries no optional marker that closure.mjs honours.
+#
+# Two capabilities of the retired family are DELIBERATELY DROPPED and are not to be re-added here by
+# adding a member: artifact commit/push (C-07, was sk-bmad-pm) and validation-history consolidation
+# (C-17, was sk-bmad-validate-architect). Docs repos are committed by a human or through `git`.
+#
+# sk-is-things-done is the acceptance verifier the delivery presets already carry; it is duplicated
+# here on purpose, the same convention `delivery:` and `goal:` document, so `--preset
+# native-delivery` ALONE is a coherent runtime.
+native-delivery:
+  - sk-spec-planner
+  - sk-design-author
+  - sk-developer
+  - sk-code-review
+  - sk-validation-gate
+  - sk-architect-rules
+  - sk-implementation-rules
+  - sk-test-gate
+  - sk-is-things-done
+  - sk-database-rules
+  - sk-database-connector
+  - sk-jira-rules
+
 # Full BMAD implementation lifecycle: architecture -> PRD/epics/stories -> build -> review.
 # sk-bmad-epic-tech-context is NOT optional: sk-bmad-pm declares it in `depends-on`
 # and invokes it mid-pipeline, so a runtime without it stalls the PM run at the tech-context step.

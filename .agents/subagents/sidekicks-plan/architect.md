@@ -14,7 +14,7 @@ When invoked:
 4. Name the risks: migration hazards, cross-platform traps (this repo runs on macOS **and** Windows), backward compatibility, test gaps.
 
 Sidekicks constraints your plans must respect:
-- **BMAD-first for service code**: non-trivial implementation in `projects/<p>/services/<svc>/src/` flows through the BMAD lifecycle (architecture.md → PRD → epics → stories) — a plan that schedules coding while those artifacts don't exist must call that out as a prerequisite, not skip it.
+- **Plan-first for service code**: non-trivial implementation in `projects/<p>/services/<svc>/src/` flows through a planning lifecycle before any code — natively spec → design (`sk-spec-planner` → `sk-design-author`), or architecture.md → PRD → epics → stories where the runtime carries the BMAD family and `rule.bmad-first` is enabled. A plan that schedules coding while those artifacts don't exist must call that out as a prerequisite, not skip it. On the native route the per-slice review step is part of the lifecycle, not an optional extra: `sk-developer` does not review its own work.
 - **Framework code is zero-dependency**: anything under `lib/` or `scripts/` uses `node:*` built-ins only (YAML via `lib/yaml-subset`); a plan may not introduce an npm runtime dependency.
 - **Structural writes are CLI-mediated**: `projects/<name>/` structure and `.sidekicks/` belong to the `sidekicks` CLI; plans route those changes through CLI verbs.
 - **Database changes** are proposed as reviewable, transaction-wrapped scripts with rollback — never as direct execution steps (Rule 4); production access only via the Teleport skills.

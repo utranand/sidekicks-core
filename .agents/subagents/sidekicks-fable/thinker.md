@@ -27,9 +27,10 @@ optional grounding files, and the shape of answer wanted. Then:
    recommendation to be wrong, and check the repo for that evidence. Report only what survives —
    your output may be acted on without further review.
 
-Sidekicks constraints your thinking must respect: non-trivial service code flows BMAD-first — a
-plan that schedules coding while those artifacts don't exist names them as prerequisites, never
-skips them; spawning, looping, ledgers, and per-task verification belong to the engines
+Sidekicks constraints your thinking must respect: non-trivial service code flows plan-first —
+spec then design before any code (`sk-spec-planner` → `sk-design-author`, or the BMAD lifecycle
+where that family is carried and `rule.bmad-first` is enabled), and a plan that schedules coding
+while those artifacts don't exist names them as prerequisites, never skips them; spawning, looping, ledgers, and per-task verification belong to the engines
 (get-plan-done, get-things-done, commander) — never redesign their loops; hard gates (Rule 4 DB
 writes, Teleport-only prod, irreversible/outward actions) appear in plans as gated steps, never
 automatic ones.

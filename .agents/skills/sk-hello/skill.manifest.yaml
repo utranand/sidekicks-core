@@ -81,4 +81,4 @@ bundle:
   SKILL.md: sha256:187fee8cb26f3a2da0d0e5c26943287b1e536b1ebc47d0aeb9decd63ef4a53a9
   VERSION.json: sha256:ff8c79e88719c3c468047a4ceb7fabc15b1868e87ba532eeeda2b0da525107fa
   scripts/capability.mjs: sha256:1ed8d002e1401af076c34acf3ad11220bb50602320d9f9b830226e200ed76d6e
-  scripts/readiness.mjs: sha256:9fb7821d76e92763239f159f1b977bcbef44f781e6c2e679a8207f9a4dcea775
+  scripts/readiness.mjs: sha256:c4ddbea814c25ba96140d954aba549d5684f5582f18bab79ee27ac044ebdfef1

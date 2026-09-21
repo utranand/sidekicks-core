@@ -4,8 +4,8 @@
   "direction": "one-way: sidekicks source -> this runtime",
   "source": {
     "repo": "sidekicks",
-    "commit": "fa3d83a8",
-    "inherited_at": "2026-09-19T23:52:20+07:00",
+    "commit": "8a3b1d7f",
+    "inherited_at": "2026-09-21T09:58:55+07:00",
     "tool": "sk-publish-core"
   },
   "options": {
@@ -44,227 +44,17 @@
         "reason": "canonical agents and generated host ports"
       },
       {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-api-documenter",
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-api-documenter",
         "kind": "directory",
         "included": true,
         "reason": "canonical agents and generated host ports"
       },
       {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-api-documenter/agent.json",
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-api-documenter/agent.json",
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "255cde1e2d9edfb3441af1b20ed0d2c3ecbf57681be86f4d34106ab01f0c70b2",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-codebase-analyzer",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-codebase-analyzer/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "ae6ac90344b3e572114b14bcbf19e714b2994622ab9a54827e0be73ec82e8335",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-data-analyst",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-data-analyst/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "846f3fa7e42024a782841832afb70b29c749d7b1eb3a42ff03b13fb6ecf3be44",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-dependency-mapper",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-dependency-mapper/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "fc58ff170b75e74854f6593eab95eeae0ee981f37b58e7b39bcda647d43a5b4c",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-document-reviewer",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-document-reviewer/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "6d973cfc12d6b546ec9fb0d9c1ba04f2ef3fb5234ea9fd8cb8d940df529280ad",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-epic-optimizer",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-epic-optimizer/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "7e026a221f584d771846062b373db27f13b533fd089b64858000f839f3c0817a",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-market-researcher",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-market-researcher/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "5e817be67aa8b162062b1ebaf9a85563bf360ed7898baa51abe2d3ac2e33b946",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-pattern-detector",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-pattern-detector/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "ed7be2b53f11f29754b2c6a328e8a16cdc8cf6fabe3e19b091b4023721f5263c",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-requirements-analyst",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-requirements-analyst/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "32e8abb6dc830d477dcc143ed0e07f7f825ec67c4fb36fb5ea44f4c08a17ef1b",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-tech-debt-auditor",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-tech-debt-auditor/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "d1f061a1c94ec05838f79e2cc149269fb5815178525e055f83dad5abe4587a98",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-technical-decisions-curator",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-technical-decisions-curator/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "361426cc8ca9fc3605432ae7a9ec157c0dba5e695a55c9cb9ea9db90f6b34b2c",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-technical-evaluator",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-technical-evaluator/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "1159a5de1166678ce853fc5dc9126783cd5912d4e36e48c8e481b7f2091f77cf",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-test-coverage-analyzer",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-test-coverage-analyzer/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "b90e2b02fc5ce6d6d6b50e7223303b2232a52c8847610435e3416b5b5b3ae2cc",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-trend-spotter",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-trend-spotter/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "ac03c211e2c42b9a74af621e4089035c77c9b9ed9558e838fc42fb170dff6c26",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-user-journey-mapper",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-user-journey-mapper/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "35afa7b819f11be63dda72e090169dd772dca341cdf5657098b4fe6f80028798",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-user-researcher",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/plugins/sidekicks-agents/agents/bmm-user-researcher/agent.json",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "1106da8364a5a8c3b30d9c9552e0a58c9bb64ccc6a20fd6403f7692d5f0697c4",
+        "hash": "46443ecbd37c3f26a5059bac794a81b84cb84d6d605949ca6b22d91f915c9ded",
         "reason": "generated from canonical subagent"
       },
       {
@@ -278,7 +68,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "01e7352706a49d3b502c7854bf83e6433c87fb1642171c7393a37b9ebe04dcbd",
+        "hash": "293502ec39b5f9b4628020fb85ae0def935f10a5947239a0cbae7583a1b3a2cb",
         "reason": "generated from canonical subagent"
       },
       {
@@ -292,7 +82,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "d858bc90a54bcdef46a11a1d19e5c4b730aa8b55b9c030fa56d65d036040797d",
+        "hash": "6fe98ce56971d376f98b4875b7c009103c4ffc6230f62031b47b0c8afc13d94b",
         "reason": "generated from canonical subagent"
       },
       {
@@ -324,6 +114,20 @@
         "reason": "generated from canonical subagent"
       },
       {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-codebase-analyzer",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-codebase-analyzer/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "2291aab95216b4fa6cb1166772b582ce70b0e0b73c4cedab671f6bba616ff300",
+        "reason": "generated from canonical subagent"
+      },
+      {
         "path": ".agents/plugins/sidekicks-agents/agents/sk-cross-platform-auditor",
         "kind": "directory",
         "included": true,
@@ -335,6 +139,20 @@
         "included": true,
         "executable": false,
         "hash": "cc4095fefb7b09ade41e8f4c8d19a981d15f300fe34c2ee83b6efb74bd5c0090",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-data-analyst",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-data-analyst/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "0d8ec127311aeb3eb04ba6b17255ac23842dca7314784f81403c2fda22d05c04",
         "reason": "generated from canonical subagent"
       },
       {
@@ -366,6 +184,20 @@
         "reason": "generated from canonical subagent"
       },
       {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-dependency-mapper",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-dependency-mapper/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "166f6cf15a08a715e4716175e88eeb0cd7909ea931fd886f397e9525aa8556de",
+        "reason": "generated from canonical subagent"
+      },
+      {
         "path": ".agents/plugins/sidekicks-agents/agents/sk-docs-writer",
         "kind": "directory",
         "included": true,
@@ -377,6 +209,20 @@
         "included": true,
         "executable": false,
         "hash": "ae5f9399bd6b027a1519d19c5880f16f7061739586c9b9febc2b801a84858d2c",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-document-reviewer",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-document-reviewer/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "4b472fb4a0c47141e0e571e2341ab502b57b3ca2508945aa296f6104834752c8",
         "reason": "generated from canonical subagent"
       },
       {
@@ -394,6 +240,20 @@
         "reason": "generated from canonical subagent"
       },
       {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-epic-optimizer",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-epic-optimizer/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "b26a65cfbc11d5b001abf784b72b222958862b785a7cc8a884cfbbd95755e6cd",
+        "reason": "generated from canonical subagent"
+      },
+      {
         "path": ".agents/plugins/sidekicks-agents/agents/sk-fable-actor",
         "kind": "directory",
         "included": true,
@@ -404,7 +264,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "92f0856530f2c523a0081cfe89618edffbff3783b1f5f9c82771eccbb0ac0833",
+        "hash": "515475308975be355a9eb0fe5c992d72ea62bb0c82a9c78b932942f9ebcc32c9",
         "reason": "generated from canonical subagent"
       },
       {
@@ -488,7 +348,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "4405c71c3cbd4254bc0a68a38288d5ef60bb1c785a1e84ec73d10a249100f0ea",
+        "hash": "0b11f18a23c25eb7561d1d17c0667039c2081f544af70bf51dc8b7c9b61aa46e",
         "reason": "generated from canonical subagent"
       },
       {
@@ -502,7 +362,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "158b96658dc9176e7a6ec8abff3e23d799370c48227e35687c27a579b933d016",
+        "hash": "5390cf88b8f386329c932293f629c16e7830dec99fb22dfd95dd12c5900aade2",
         "reason": "generated from canonical subagent"
       },
       {
@@ -548,6 +408,34 @@
         "reason": "generated from canonical subagent"
       },
       {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-market-researcher",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-market-researcher/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "56d17d10440e046f4ee359315d74b407a8df5a4e1026f76820170b850b3c59f2",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-pattern-detector",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-pattern-detector/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "b3915c92a0bef3724416f216f321124ebc6e2e65fe54173a0705bfcf8abf2f48",
+        "reason": "generated from canonical subagent"
+      },
+      {
         "path": ".agents/plugins/sidekicks-agents/agents/sk-python-skill-engineer",
         "kind": "directory",
         "included": true,
@@ -559,6 +447,20 @@
         "included": true,
         "executable": false,
         "hash": "d2649f21aabab865e2d4ab067f206dffc6e45974e78cfedb9f97be1b0d8090b5",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-requirements-analyst",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-requirements-analyst/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "254ec12913dfd74b6ef3e2f48b3ac5396839f8e2d1e130f091ffe6cc8306a5a0",
         "reason": "generated from canonical subagent"
       },
       {
@@ -586,7 +488,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "3ef1521d99b865576f5d2389692513dd901f2a6f750559ea659353e1b75c304c",
+        "hash": "01ac3ce1adfbbde31ae2b273ddc8bd3c3f4f1a77608c4df02af7c57d3f9bccdf",
         "reason": "generated from canonical subagent"
       },
       {
@@ -604,6 +506,62 @@
         "reason": "generated from canonical subagent"
       },
       {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-tech-debt-auditor",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-tech-debt-auditor/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "bd88f418cf8fc27d91dcf9baca8502bc2e397c1931d7746e4a97efdaf118ea68",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-technical-decisions-curator",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-technical-decisions-curator/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "c8684c18b6097630f1e5c9c4fe579464363f6dc8d142d6fbd90b9c9e5a80a35c",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-technical-evaluator",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-technical-evaluator/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "328f1dcc743b20b53448a235f248ffd67f7d3c5da8cb14fa14e6a54d2938929d",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-test-coverage-analyzer",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-test-coverage-analyzer/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "786a42d8468c9042840bc28fa60ddb28d4ccbab3988eaa8bcbe3f78d37ce00d2",
+        "reason": "generated from canonical subagent"
+      },
+      {
         "path": ".agents/plugins/sidekicks-agents/agents/sk-test-engineer",
         "kind": "directory",
         "included": true,
@@ -615,6 +573,48 @@
         "included": true,
         "executable": false,
         "hash": "1f6b76b1ba3dd1c2cec1082eb4c49c01662df8f023037a66039532e2217ce81a",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-trend-spotter",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-trend-spotter/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "058c9d9f524aa7f751dacbf0b06901450e770fba438a54df268582a959aecf5e",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-user-journey-mapper",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-user-journey-mapper/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "3e3b7647542babc1dab2d19698b583981085df2ed72c0cce135e5c156e2bc1ef",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-user-researcher",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/plugins/sidekicks-agents/agents/sk-user-researcher/agent.json",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "d7527eca0536d8f7aa9fb562e29c55dd49dec875603583938927b07478316269",
         "reason": "generated from canonical subagent"
       },
       {
@@ -652,7 +652,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "268f80c279a38de77c78fb635443dd74f84ccedbe4d19ccbef27c8a34ff4b437",
+        "hash": "bd75a1a6c086e8aee8337e835e2c6b59ab0e45d4db07a825ca5f05d4a73e9daa",
         "reason": "selected skill runtime projection"
       },
       {
@@ -660,7 +660,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "867609630bf898dd4c21fc02a1a60adc0c7b4be2d3586b7357096d17328a77fb",
+        "hash": "f2b6857ed1a84563f0b118c46875e6b10950d00690a4427e13a1443f96d07736",
         "reason": "selected skill runtime projection"
       },
       {
@@ -928,7 +928,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "9fb7821d76e92763239f159f1b977bcbef44f781e6c2e679a8207f9a4dcea775",
+        "hash": "c4ddbea814c25ba96140d954aba549d5684f5582f18bab79ee27ac044ebdfef1",
         "reason": "selected skill runtime projection"
       },
       {
@@ -936,7 +936,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "d2d3d59be0c6856e4791d92d6ea8cece87c7e90d52fa7235e67f61f0926d7571",
+        "hash": "1eef4fb932e692834cffacc97c8d49084319fc2dc2cc49e533980382acb951bc",
         "reason": "selected skill runtime projection"
       },
       {
@@ -1192,7 +1192,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "53a445b3c65cc3b2616ab9347096259e311f3b79af045a71d8aed8b05874b700",
+        "hash": "a4e4991c64fd71dc5cc0dcde37b2c17ca1101559808928bfe2062ccefcb6e8e6",
         "reason": "selected skill runtime projection"
       },
       {
@@ -1294,7 +1294,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "d337ccd8918608fed84e3930e9803c2835e270b0212e99b7245add3a98c90467",
+        "hash": "40b1b3288c27fd3476041e1440c6e60a3974cffd69d1ea4d01ff25cc031d0745",
         "reason": "selected skill runtime projection"
       },
       {
@@ -1326,155 +1326,41 @@
         "reason": "canonical agents and generated host ports"
       },
       {
-        "path": ".agents/subagents/bmad-analysis",
+        "path": ".agents/subagents/sidekicks-analysis",
         "kind": "directory",
         "included": true,
         "reason": "canonical agents and generated host ports"
       },
       {
-        "path": ".agents/subagents/bmad-analysis/api-documenter.md",
+        "path": ".agents/subagents/sidekicks-analysis/api-documenter.md",
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "1951be757af603a8513bb73d0132b249d61996ae57f3d81ccb6c702670c543db",
+        "hash": "9fab88b58901c56d7adfde0d8ed116bcafeb89f440083dbbf6f71876124ba42c",
         "reason": "canonical agents and generated host ports"
       },
       {
-        "path": ".agents/subagents/bmad-analysis/codebase-analyzer.md",
+        "path": ".agents/subagents/sidekicks-analysis/codebase-analyzer.md",
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "08a23a40416fa302acf3b4abc5dfcaa1af19bab0357fd00433f75b13fc3e03e2",
+        "hash": "924e1b04b02e4cc09f6795761767d48766758710cece1739a09d84f02661af8f",
         "reason": "canonical agents and generated host ports"
       },
       {
-        "path": ".agents/subagents/bmad-analysis/data-analyst.md",
+        "path": ".agents/subagents/sidekicks-analysis/data-analyst.md",
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "98b8f6003ba2d4cbc10a65d98f54c0d8eece583fdc4b2ec50297d23e95813607",
+        "hash": "e3931516677749dcdc617467f34e20441933fdaad0a2c5dc3d3605739634ac59",
         "reason": "canonical agents and generated host ports"
       },
       {
-        "path": ".agents/subagents/bmad-analysis/pattern-detector.md",
+        "path": ".agents/subagents/sidekicks-analysis/pattern-detector.md",
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "15bf9792b251009157127478c24ca3b234a8e4cd16bcc82880b6219980dd8eae",
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-planning",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-planning/dependency-mapper.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "549a59f0240ffb2de67178477b06d090a3402b1272d4585e96ca06dbed117ec0",
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-planning/epic-optimizer.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "dc61e8a9eb8193d1071cba5a39a0fc87ffafd038b603812c642087aa85d82e8f",
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-planning/requirements-analyst.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "0c15dce9ab4408c167840bbaa8def360c398199159418d01befd977cffbd2482",
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-planning/technical-decisions-curator.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "12896ca467bf1e431cb80f1616d860b9a4a895b413c1657b92ce67b94c01941d",
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-planning/trend-spotter.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "575ca5451ed2060661f3c680f368d9c135f6c00366dfacf899c2930865affb3a",
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-planning/user-journey-mapper.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "854e0733a5ed6fb63f4b26eefdb3ae170cc0f22b15500fe7e9baa40b2298d6aa",
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-planning/user-researcher.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "47116d107eb35765a1baf0e3bf5e9e7103e1d516a53cf3de59e2e8ea9511f2ae",
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-research",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-research/market-researcher.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "f49c5fc49fba6838a6b35c7dd503ee1ed940152c70c9c33904feb5ef6f51717f",
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-research/tech-debt-auditor.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "736ce30ad776d7bfdf7310a5afb1b525c02d952e04978873d8dd7bedcc1cebd8",
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-review",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-review/document-reviewer.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "6c06bc40b2c7b8708e5000faa6edd9c2bce1687a5aaca6349e2175429f4bc8e5",
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-review/technical-evaluator.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "8b2d21bfd2976852b07f10802e688a5e53fa708244d09c3479f90605e6f9a76c",
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".agents/subagents/bmad-review/test-coverage-analyzer.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "4ad6a056f6612ad590e8422f5d7fc27dbf498f82ffd1c44cc145ad37d366c827",
+        "hash": "60b2a870efd2c94996fdad67d79de081007a8bcb49e1a480ad40d0cf274c6a25",
         "reason": "canonical agents and generated host ports"
       },
       {
@@ -1504,7 +1390,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "2bdf0e7f7353b3c20f576c4f56cdced63c66d64f45244c823641338da8adf4a5",
+        "hash": "7ea5786e0b3cbce4939906683ea3f88b1df864c61dd2706713a75b20fc85fdc6",
         "reason": "canonical agents and generated host ports"
       },
       {
@@ -1564,7 +1450,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "b5feff7a97bbc45be1c54079c0f0a786428cd34362748b12d26471dcce9e9d23",
+        "hash": "bffac13ac16113d647cd685833c82ae16bce6a4158f71d4120a649f7e23c3d6e",
         "reason": "canonical agents and generated host ports"
       },
       {
@@ -1608,7 +1494,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "788943de9ce1c6954a35db9b226dcd12a1d4a8a4235e06422e6a70060eb0428d",
+        "hash": "1a7f8285b8965c83bcd0011807ca7e22dc5b46b8c866b01c062e14b22b194444",
         "reason": "canonical agents and generated host ports"
       },
       {
@@ -1640,7 +1526,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "5926ac1d9f2cda2dc1f6fd1ca4a7f07675c3af369f9e39526e394a42eb770cac",
+        "hash": "7cb5c0e32d492beaca4070db6c0bd5d9a75df6c717b9c25bca6fbdbda3f64dbf",
         "reason": "canonical agents and generated host ports"
       },
       {
@@ -1654,7 +1540,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "55116c1c2fc9c61312375cab9dfd2416b5a685f8b4a5489d92abfb5f5ddafdc5",
+        "hash": "c2c62af4240fbf556367432fc28fa1bdf0f57f97b8a8db68507aacc8824c5419",
         "reason": "canonical agents and generated host ports"
       },
       {
@@ -1662,7 +1548,85 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "1fb946fd58bbb15930fe4325334984c5b9e5d2b994e69d77a5332f0d874fd346",
+        "hash": "16897d2141c2808db6ffffdabe0401bba3483b5f23e2f45ff6cb906ae17f4da9",
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/subagents/sidekicks-plan/dependency-mapper.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "990f8fc9e6a135559c668ab465bf98f2aa90fb652c95c3db7a0ed0f7aa6e9eeb",
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/subagents/sidekicks-plan/epic-optimizer.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "6c98df87bc2007d2130c4f9e7837eb989e229086890b747fb8af5a62ae8f6bb5",
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/subagents/sidekicks-plan/requirements-analyst.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "4e31026d3f9a8061d5d878c5a07d229cbeb14ab36581ce350690ab658a593605",
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/subagents/sidekicks-plan/technical-decisions-curator.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "8309e181d71cd3c1f22f71f1be4f0958283845a0c21275fb4f4b0196d7dde7b3",
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/subagents/sidekicks-plan/trend-spotter.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "b607b784e25fb6bc249d9d26c10e7f64bb8707234228a8713ddaa4004c4d3d17",
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/subagents/sidekicks-plan/user-journey-mapper.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "e52cc2c31bd0133a99e9e5a30a02b958d0e491f40ce838f766c067f2bc695530",
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/subagents/sidekicks-plan/user-researcher.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "5c2adf4c8531abc7d64172a4ea4cfd8de5375f9f2ae26bf3cd345f3be2c524ba",
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/subagents/sidekicks-research",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/subagents/sidekicks-research/market-researcher.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "4f24a0cca2605753c140f88a603353d02ef073c9b964017c315cebfaac8d01b6",
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/subagents/sidekicks-research/tech-debt-auditor.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "2d7b7d87794f2dbbe0cb70b8bd0ddb5a793f8c0d441dccbdc506a0cca8eeb8f4",
         "reason": "canonical agents and generated host ports"
       },
       {
@@ -1696,6 +1660,14 @@
         "reason": "canonical agents and generated host ports"
       },
       {
+        "path": ".agents/subagents/sidekicks-review/document-reviewer.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "f065e16251bd4c16954bcc418202b50b264122d100ec8a1459d37b5ab4fabdae",
+        "reason": "canonical agents and generated host ports"
+      },
+      {
         "path": ".agents/subagents/sidekicks-review/done-verifier.md",
         "kind": "file",
         "included": true,
@@ -1720,6 +1692,22 @@
         "reason": "canonical agents and generated host ports"
       },
       {
+        "path": ".agents/subagents/sidekicks-review/technical-evaluator.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "e10a22a154a396a6159c73b76f8676bd604407c9aac62e591b4eb8deab5f5492",
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".agents/subagents/sidekicks-review/test-coverage-analyzer.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "158b28c4aa3a2fef63c5d5537ebd93fb89d86b2a3b7098a113398a662e257d52",
+        "reason": "canonical agents and generated host ports"
+      },
+      {
         "path": ".claude/agents",
         "kind": "directory",
         "included": true,
@@ -1732,155 +1720,41 @@
         "reason": "secret, local state, or build residue"
       },
       {
-        "path": ".claude/agents/bmad-analysis",
+        "path": ".claude/agents/sidekicks-analysis",
         "kind": "directory",
         "included": true,
         "reason": "canonical agents and generated host ports"
       },
       {
-        "path": ".claude/agents/bmad-analysis/api-documenter.md",
+        "path": ".claude/agents/sidekicks-analysis/api-documenter.md",
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "4c834181bab2a0ec86602d0914fdd45b7dc4950cea9592651805ee3ccdb38051",
+        "hash": "2ad3d55bdf9060107f042ab6c35c0b826be7ba97eebf6a5fca5116f79779a88a",
         "reason": "generated from canonical subagent"
       },
       {
-        "path": ".claude/agents/bmad-analysis/codebase-analyzer.md",
+        "path": ".claude/agents/sidekicks-analysis/codebase-analyzer.md",
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "049dc047e38e53a6d7fd87b119fb3d7841edcd954e34514aeef1a2f473bbe60c",
+        "hash": "0ba57e6561e1aae29d67667d4cb89f774723b3a457d07c619d79c2c5b361a4c1",
         "reason": "generated from canonical subagent"
       },
       {
-        "path": ".claude/agents/bmad-analysis/data-analyst.md",
+        "path": ".claude/agents/sidekicks-analysis/data-analyst.md",
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "0c898c29b40dfcaa1ed5740c586a41c22fbaf11bea0c308cec2711c1f6bd36ed",
+        "hash": "e6e83e87d203778bc4775ebd6ef41b92b2c5a709f5a001caf91145fc56535b70",
         "reason": "generated from canonical subagent"
       },
       {
-        "path": ".claude/agents/bmad-analysis/pattern-detector.md",
+        "path": ".claude/agents/sidekicks-analysis/pattern-detector.md",
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "77f5c8eb789f1a28cff53a382142f25b46f95c231ad1b2c8cd93275f773b8ea6",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".claude/agents/bmad-planning",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".claude/agents/bmad-planning/dependency-mapper.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "f8be175dd210c2b6ada13c2978c1a37f56b2c30f836ddd049e7e6fcb99f6cab9",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".claude/agents/bmad-planning/epic-optimizer.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "7f815657221af8b0138ecabee3ef251ca7d802263f10a398cbca5e20e3a1d475",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".claude/agents/bmad-planning/requirements-analyst.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "343305e56cc8fb8eed47a15545e3a3b55b83362ba189bc51bda10b78bcbcc432",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".claude/agents/bmad-planning/technical-decisions-curator.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "69f023bfa0ffec244e3a9df23cbfa5f9e4101c157893af89e662f680bdcf2568",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".claude/agents/bmad-planning/trend-spotter.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "e863d4ebb0d9626cd349ec6e63b59912e447d23db08734b6d5ac86b235872357",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".claude/agents/bmad-planning/user-journey-mapper.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "a0cadc282eb94b48ab6f161b8a22c0da641f576f7cd40035b395fba79271633f",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".claude/agents/bmad-planning/user-researcher.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "1ba293e0bc00b13973aa13001d09fcdb7a2adf115aa7188ea564cabbcdfe1a3a",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".claude/agents/bmad-research",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".claude/agents/bmad-research/market-researcher.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "2021e8c88f8e632467d97201164bb57cc5275395145704178e200d2fb6a639b5",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".claude/agents/bmad-research/tech-debt-auditor.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "74202c3335034893afde84e7859f0abc56f1a84975a0c33f7b400fded7dd7adb",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".claude/agents/bmad-review",
-        "kind": "directory",
-        "included": true,
-        "reason": "canonical agents and generated host ports"
-      },
-      {
-        "path": ".claude/agents/bmad-review/document-reviewer.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "a2b04b8372c850be9a71eac5012398d951b085d71dc004dc048ca79fd7e80b06",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".claude/agents/bmad-review/technical-evaluator.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "9c0e8a22c9041eb95421b1480e15ed8a39da81aa8946d3628b31d8a5a5f8efb9",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".claude/agents/bmad-review/test-coverage-analyzer.md",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "9d0de6e5dc1b29a70248162d4fcc415272ed9edac5b64cd1a8d5438741c9cb1b",
+        "hash": "75c11540f073372b9207a9dada631aa579ea1fbfd0e928c866000eadd39cc533",
         "reason": "generated from canonical subagent"
       },
       {
@@ -1910,7 +1784,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "af5fb8779757333044e257f65dc6aaf03536ed25de033aef9cb36e80d9664d81",
+        "hash": "21edbcc56b9966541413fbf3fa988b3a537ef6256e15a22c15517b0fd43c0e11",
         "reason": "generated from canonical subagent"
       },
       {
@@ -1970,7 +1844,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "c5d04e71d9e85c0b4f231db11facbbc7eead5b691b180f0ffaa0c0ce0b5217c9",
+        "hash": "6702bde78c6f7b8c4abccb080e6556aedaf3bc84e45835a387a372dfbe3e3166",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2014,7 +1888,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "f30e5b1fa7cb81855965a2bf626af99df9df3768b288b5dbdf38f22e657bdd4b",
+        "hash": "cd9224c90833237495b30a7b116ce58f5972a391814b616c96769b4b30b6f7e0",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2046,7 +1920,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "b1e0b764857fce70063c4558d68c3e8b15d25cd33ccb4e7b1937e36cd2575ebf",
+        "hash": "a870284335c28d1dc856fb2da8e205a0d228b6491559955b82215756048fe28e",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2060,7 +1934,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "dfd4cae68aa20ee19022655abdaf094fe43c0648806ec8d741dcd8cb00f18549",
+        "hash": "b341973dc8f8790039bb0a446944899e90ce9698573471d6c358d191e2489113",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2068,7 +1942,85 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "0a524e9069dab851d3f2d632198ef661db77196d695b05f84bb64da702295a86",
+        "hash": "bcaba5b2195ed58f99cbfb5088c8a88596f88b778ed35988335eea5ae5df54b2",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".claude/agents/sidekicks-plan/dependency-mapper.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "3494f8ab3ed8cddd483d7f8b19f7d306377c8ef207d42a2b18ddbc17ad06a393",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".claude/agents/sidekicks-plan/epic-optimizer.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "b8b0bfd2ed832d803f9a24f588e5c179badb8cb0b6ab204fa623489159189d18",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".claude/agents/sidekicks-plan/requirements-analyst.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "ec4814e2ccbf375322c48ef930e24b2daf1557cfb05c4778977369f4d5199472",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".claude/agents/sidekicks-plan/technical-decisions-curator.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "73267f701b64d53b3077a11c6e2e39b358758dcc64550fb6429421d84cc1e64e",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".claude/agents/sidekicks-plan/trend-spotter.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "2e213d9f742fae03cd15897aaded463e09fcad5297cc0bc68e0853ac1725512d",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".claude/agents/sidekicks-plan/user-journey-mapper.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "e107e465b3216a485b35e3704be87c2ba90b474e74f4454f33cc80485a12d67c",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".claude/agents/sidekicks-plan/user-researcher.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "2cc470c8139ca9e6bc70cdddbde5604d979d77cb1191c50e92284844779cd8bc",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".claude/agents/sidekicks-research",
+        "kind": "directory",
+        "included": true,
+        "reason": "canonical agents and generated host ports"
+      },
+      {
+        "path": ".claude/agents/sidekicks-research/market-researcher.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "286a7e04ec21ff1661a311e52c2816bad754081e0936cb277c42c0cf04577292",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".claude/agents/sidekicks-research/tech-debt-auditor.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "f883e47abb36cf8113757decc8a1b1177c0626dd5768ce5bb420883e103774b5",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2102,6 +2054,14 @@
         "reason": "generated from canonical subagent"
       },
       {
+        "path": ".claude/agents/sidekicks-review/document-reviewer.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "e2a0bc05072764ddcd95c340f9c5ec8e34ea353020425780b33857eaaff0692f",
+        "reason": "generated from canonical subagent"
+      },
+      {
         "path": ".claude/agents/sidekicks-review/done-verifier.md",
         "kind": "file",
         "included": true,
@@ -2126,16 +2086,20 @@
         "reason": "generated from canonical subagent"
       },
       {
-        "path": ".claude/commands",
-        "kind": "directory",
+        "path": ".claude/agents/sidekicks-review/technical-evaluator.md",
+        "kind": "file",
         "included": true,
-        "reason": "command adapters"
+        "executable": false,
+        "hash": "7000511409d97c936cb718b68fc1482a5dab6d1653ca74dfdc63975a703bbda1",
+        "reason": "generated from canonical subagent"
       },
       {
-        "path": ".claude/commands/bmad",
-        "kind": "excluded",
-        "included": false,
-        "reason": "command capability absent: bmad"
+        "path": ".claude/agents/sidekicks-review/test-coverage-analyzer.md",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "bf90fdca90e048512e82f9d30bc337273a008339a47304fc43d10e3a920ec506",
+        "reason": "generated from canonical subagent"
       },
       {
         "path": ".claude/settings.json",
@@ -2152,131 +2116,11 @@
         "reason": "canonical agents and generated host ports"
       },
       {
-        "path": ".codex/agents/bmm-api-documenter.toml",
+        "path": ".codex/agents/sk-api-documenter.toml",
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "bd5a4f07969e30b5e3b81e888016f7f7f6ff627d29f812ae0cf5f3112a6a7d5b",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-codebase-analyzer.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "fc83f3e737ef4110999649ec316524751b3ba5e1aaa3e84102191cfdef418dc1",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-data-analyst.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "583c66b213bcfc0ea74b8332bfed77bea5363ef34ba7922d11f77b8f0ba096e6",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-dependency-mapper.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "edddec522eb11bdba76798cdae0e93a591300de5d5523688bcbf12b6cec2dc59",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-document-reviewer.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "9ed5267a8d85222b5d91633f25c441c788619d2452f8c6c062b9884a96caee11",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-epic-optimizer.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "a1dc0b6a8520a1ec6e80eb0bfa4d301ac8a0dae31a2e0ad8db708ad05520cc4f",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-market-researcher.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "b80aa01cecebc8769d0c90bd469b16cd28a33d211481dee5361e41a0df5be084",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-pattern-detector.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "1e61cc90b7a3eec3788fc24e26a421471eff0883b587439a7aff85be13fe6414",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-requirements-analyst.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "9102d45ffcc1836da83a64c18e6c8bd3b5b5b3118ff693e09f667caee6d454a9",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-tech-debt-auditor.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "7c04fad93ebefe9e3f744ef6e913730fafc86144f714726967247580e959aa66",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-technical-decisions-curator.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "bdbae1bef9dcda931a2c847bf505a6efd1b3e7f017d27b85b8f7368eccfd5899",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-technical-evaluator.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "f6e5f2f69be7c8774db2567f41699e3050fd3a049364f1904c1649ca368a63a5",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-test-coverage-analyzer.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "3f102a9274a1affe9c4a16367f0674f2739491d7412fd4f0cd8301491cc4fa97",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-trend-spotter.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "41f2396da9b1d6c8a1843dd2caf9f62978e1b4ef36f9c1ca632f7721a50db17f",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-user-journey-mapper.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "c74545cd0f3ff6bb82e6c496c2f2581a1868239d6e9a3b45b0b0f12315c79360",
-        "reason": "generated from canonical subagent"
-      },
-      {
-        "path": ".codex/agents/bmm-user-researcher.toml",
-        "kind": "file",
-        "included": true,
-        "executable": false,
-        "hash": "7ef479dcff91239ac9f45a498ecb1d2ae2aa538983851d1f7031eb7a6a8b3310",
+        "hash": "df8b6e6aed847185dcf22ee9dcc8b824d32abc59b8453cc1bf387b2f802399f8",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2284,7 +2128,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "05b9ed8672361d3a799cb3118196d6ee5407578423093da294a8485db7f31d40",
+        "hash": "b5c9f8f1c7576bcb705870e6f684cdb1afb9995f664e8fe1baa09714581e2525",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2292,7 +2136,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "64169866f33c6be9a156192209a8dc68d095bd212ec93269a22a66f1453376be",
+        "hash": "b85c67de27501bdbf499fcd391875f51eb354f7eee375d96ec564816f40febc9",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2312,11 +2156,27 @@
         "reason": "generated from canonical subagent"
       },
       {
+        "path": ".codex/agents/sk-codebase-analyzer.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "790ba6190095302dd2e80b35aad45faa6d18e24eea653c841f05d583645f8bbf",
+        "reason": "generated from canonical subagent"
+      },
+      {
         "path": ".codex/agents/sk-cross-platform-auditor.toml",
         "kind": "file",
         "included": true,
         "executable": false,
         "hash": "e00007ffad5c9c8a016ea0592692ef697135c77da04d5525d95813bd6c5cf989",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".codex/agents/sk-data-analyst.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "6253f97244c34b0ab4de2b34fb78a55339b3183b4a4c60608df2490698515c03",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2336,11 +2196,27 @@
         "reason": "generated from canonical subagent"
       },
       {
+        "path": ".codex/agents/sk-dependency-mapper.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "9078f948aeb22d7707e39ed575084d25db06ffcece89feaa024cec3084c0e894",
+        "reason": "generated from canonical subagent"
+      },
+      {
         "path": ".codex/agents/sk-docs-writer.toml",
         "kind": "file",
         "included": true,
         "executable": false,
         "hash": "517819da3d097eedce607f70a4f4a7d6b7719cad2901616b1a2942ae46683a18",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".codex/agents/sk-document-reviewer.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "da550c341943de6cbd9709906b9eab339fc69587364eb2ef77a5207b3e82e021",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2352,11 +2228,19 @@
         "reason": "generated from canonical subagent"
       },
       {
+        "path": ".codex/agents/sk-epic-optimizer.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "df8f541a8ff5e8a5a7a08b3e354aec2310d32a3f7d4725e9b5e2b3093d013034",
+        "reason": "generated from canonical subagent"
+      },
+      {
         "path": ".codex/agents/sk-fable-actor.toml",
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "8742659d8b1cac3a7044cbfc26df40cfb2465d1ba57c03221e06f1dd8a214e5d",
+        "hash": "9673ee999cc83ba31677cfa3c5e3ce3bc0f11684f862fa2595045337a68a61f5",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2404,7 +2288,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "544ad7eb037907035bc6813c1f484522ce28a2bfa95fcfddb6aad3c19fd1ee42",
+        "hash": "6a97ea67f5f2d4db888cbffd5af60280fadec328ab2aefcc967c106d17351eb2",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2412,7 +2296,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "6170336eb3c496b0971ea494c21a302202ca843fb013da22af95cc102d9991f4",
+        "hash": "b604bfa5e78928dfab4055be4bce49a880e1d093324cecc5c514466ab588b5d1",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2440,11 +2324,35 @@
         "reason": "generated from canonical subagent"
       },
       {
+        "path": ".codex/agents/sk-market-researcher.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "0336e4b581a6f0b699beb975e5bb6e0332b521fcdfa08b03bffc54c65ee305ad",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".codex/agents/sk-pattern-detector.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "0492e9f5b36406448944e364ecd59e77ad2b70368aebfdc68f67487facf80a16",
+        "reason": "generated from canonical subagent"
+      },
+      {
         "path": ".codex/agents/sk-python-skill-engineer.toml",
         "kind": "file",
         "included": true,
         "executable": false,
         "hash": "0460a4a223b7f73ec33817c6e928c81ff8fe953901dffc49351e44c1ecb3e5cb",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".codex/agents/sk-requirements-analyst.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "16eb4f8f09c050e68d458bcdedf0d2642596025b15228f91ad59d3818a1b12cb",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2460,7 +2368,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "611b036e1184d95c27528d617a66a36139226e5c2f2aa749fa71d99407c1d7df",
+        "hash": "a5d2686efba4c1ab19f6392b1906a971f7855136b5f984df16b26415ad6302fc",
         "reason": "generated from canonical subagent"
       },
       {
@@ -2472,11 +2380,67 @@
         "reason": "generated from canonical subagent"
       },
       {
+        "path": ".codex/agents/sk-tech-debt-auditor.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "fa09b84ffdce0c6616d8c336a77da24a89dc7a0e143876b40425525b34a2ad49",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".codex/agents/sk-technical-decisions-curator.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "19d6a98d80709e7dd089ae70dba04a050f54a1acda901f75c8b7141f9c7076a3",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".codex/agents/sk-technical-evaluator.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "9b550b402c2025f4bcd101c1b0684820e24175fc8486f67645791ce85b905147",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".codex/agents/sk-test-coverage-analyzer.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "206209616cbf6c7a55bbdd181e9da672ba07044861940224c00784cb392ca74f",
+        "reason": "generated from canonical subagent"
+      },
+      {
         "path": ".codex/agents/sk-test-engineer.toml",
         "kind": "file",
         "included": true,
         "executable": false,
         "hash": "28e15737823297337f6001b7f907acf990c3332fe37422b4bf353be537a11650",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".codex/agents/sk-trend-spotter.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "8c727e586be75cb1edf57f28c1f9e7fa8f357265094da04acdad00cf6a177e45",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".codex/agents/sk-user-journey-mapper.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "00444167b4ff0bdd8937c1059733b788feb0dad09687e629a4edb2279f58271d",
+        "reason": "generated from canonical subagent"
+      },
+      {
+        "path": ".codex/agents/sk-user-researcher.toml",
+        "kind": "file",
+        "included": true,
+        "executable": false,
+        "hash": "674a27b861f66af50408a9d757619d3494af7ffbe9b974886f9c75a0feaca197",
         "reason": "generated from canonical subagent"
       },
       {
@@ -3816,7 +3780,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "f9e9c1cdc948ab241a82d033edb1c803a6724d5891e111832149e095d6bb1dc2",
+        "hash": "9603bb177848e3a27129cd5dd3c8a360ac3f971fa14623c3c3e4a33a27437d0d",
         "reason": "framework substrate"
       },
       {
@@ -4318,7 +4282,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "1bcddd3a2ad8a4826bb96343e2b89b59160358d49c2af34a851337329da3d21a",
+        "hash": "b55dde9699bd30ee82992ef4c699d7de38ed3ca70452b1f6380c069ebed5a636",
         "reason": "framework substrate"
       },
       {
@@ -4372,7 +4336,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "1b5494e5c596501bdd5fac6f9f6153cad60f2ebdd38321a6306418915b29139c",
+        "hash": "3ac80e5104baf934e24d45d10829c8443790b892882e6860043c49f89301dd06",
         "reason": "framework substrate"
       },
       {
@@ -4492,7 +4456,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "2794c9a068dbdee87aa01d49897d9d26b47463e6ac3fb8b7787ce7eeed2de066",
+        "hash": "ed2a0ac8c0da7d0459df6588c116c7c1988045194f43ea364250b78f36db60c4",
         "reason": "framework substrate"
       },
       {
@@ -4688,7 +4652,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "2c86bf5358df2a56bfa534645c135434f4c7652f469a7e1666e59026d8c067fc",
+        "hash": "f9832466fdbff368c2de26634c39b6b2bcdc86e794bf189d905650d226ce9c21",
         "reason": "framework substrate"
       },
       {
@@ -4744,7 +4708,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "b1841c61b49618d9d03246c6e0cbf45602ad05763743d9118a14174d909f5d89",
+        "hash": "33e2b2564bc4e9f1143a01a1569e6d7a98559f615caf88a71b293439641744c2",
         "reason": "framework substrate"
       },
       {
@@ -4824,7 +4788,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "766e34d658c62b766612cb9d2e3a6000f412f5361bc6a648cfa684f9d1c6340b",
+        "hash": "1c3964d7a63fb14641ebbe7f8842cc8e0c9c1f8e6efab1e8f701a12e51c7c4d7",
         "reason": "framework substrate"
       },
       {
@@ -5674,7 +5638,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "ee9db24ef4617f489e4b648b8f605f274abe4a91c6b1692e3826775644c46233",
+        "hash": "ce5c2dc102d5be96fbf523522104a09cd1514382ef9eb47b93798fb1eaded948",
         "reason": "framework substrate"
       },
       {
@@ -6508,7 +6472,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "22f7cbb198ec7bd70d06481ad7b71507d2b4e170dc2a3926fe8094602b98a67c",
+        "hash": "63d8b6c23accd0250f669b1ba98f1cc319549be51d1c07283ee81d3ba025ec73",
         "reason": "framework substrate"
       },
       {
@@ -7271,7 +7235,7 @@
         "kind": "file",
         "included": true,
         "executable": false,
-        "hash": "a7b1da15a019d9300460ad79126fa262faf786cea3e9956a72b73ef274435ece",
+        "hash": "d3f5bebaabba8987662d630d984c583fb96723bdadce4703aa86fcd4a49af225",
         "reason": "root-structure"
       },
       {
@@ -7381,7 +7345,7 @@
         "reason": "source-only content, state, or secrets"
       }
     ],
-    "digest": "587f38d1a6556ccb26d2fec2b53c5429aa31b07de3b019153a2f8a71e9bd0fa8"
+    "digest": "979797db96df07252d7eea7ed27ad20cb9b5c3744f869e5b958c25dbbb459427"
   },
   "units": {
     "skills/sk-hello": {
@@ -7389,14 +7353,14 @@
       "origin": "active",
       "version": "1.9.1",
       "source_path": ".agents/skills/sk-hello",
-      "source_commit": "fa3d83a8",
-      "inherited_at": "2026-09-19T23:52:21+07:00",
+      "source_commit": "8a3b1d7f",
+      "inherited_at": "2026-09-21T09:58:56+07:00",
       "files": {
         "SKILL.md": "187fee8cb26f3a2da0d0e5c26943287b1e536b1ebc47d0aeb9decd63ef4a53a9",
         "VERSION.json": "ff8c79e88719c3c468047a4ceb7fabc15b1868e87ba532eeeda2b0da525107fa",
         "scripts/capability.mjs": "1ed8d002e1401af076c34acf3ad11220bb50602320d9f9b830226e200ed76d6e",
-        "scripts/readiness.mjs": "9fb7821d76e92763239f159f1b977bcbef44f781e6c2e679a8207f9a4dcea775",
-        "skill.manifest.yaml": "d2d3d59be0c6856e4791d92d6ea8cece87c7e90d52fa7235e67f61f0926d7571"
+        "scripts/readiness.mjs": "c4ddbea814c25ba96140d954aba549d5684f5582f18bab79ee27ac044ebdfef1",
+        "skill.manifest.yaml": "1eef4fb932e692834cffacc97c8d49084319fc2dc2cc49e533980382acb951bc"
       },
       "selection_reasons": [
         "declared",
@@ -7404,7 +7368,7 @@
       ],
       "projection": {
         "copied_files": 5,
-        "copied_bytes": 108818,
+        "copied_bytes": 109200,
         "excluded_files": 0,
         "excluded_bytes": 0,
         "excluded_by_class": {
@@ -7437,13 +7401,13 @@
       "origin": "active",
       "version": "1.0.1",
       "source_path": ".agents/skills/sk-cli",
-      "source_commit": "fa3d83a8",
-      "inherited_at": "2026-09-19T23:52:21+07:00",
+      "source_commit": "8a3b1d7f",
+      "inherited_at": "2026-09-21T09:58:56+07:00",
       "files": {
         "SKILL.md": "7165b90d56d2fee3e0533493c4ee8bd7928aa607e144d9aea231f46249b99a1e",
         "VERSION.json": "0fb008e56eb890ea2c586019ba368ba5668b11664ed0c54b5e2b94a2bc4458e9",
-        "rules/rule.plan-first.md": "268f80c279a38de77c78fb635443dd74f84ccedbe4d19ccbef27c8a34ff4b437",
-        "skill.manifest.yaml": "867609630bf898dd4c21fc02a1a60adc0c7b4be2d3586b7357096d17328a77fb",
+        "rules/rule.plan-first.md": "bd75a1a6c086e8aee8337e835e2c6b59ab0e45d4db07a825ca5f05d4a73e9daa",
+        "skill.manifest.yaml": "f2b6857ed1a84563f0b118c46875e6b10950d00690a4427e13a1443f96d07736",
         "skill.yaml": "68012d0915d5fa80be9a3ccb48c18fc6d6d0ae83474d6ac24b0ce47787ee189f"
       },
       "selection_reasons": [
@@ -7452,7 +7416,7 @@
       ],
       "projection": {
         "copied_files": 5,
-        "copied_bytes": 7993,
+        "copied_bytes": 8578,
         "excluded_files": 1,
         "excluded_bytes": 1110,
         "excluded_by_class": {
@@ -7487,8 +7451,8 @@
       "origin": "active",
       "version": "1.5.0",
       "source_path": ".agents/skills/sk-commander",
-      "source_commit": "fa3d83a8",
-      "inherited_at": "2026-09-19T23:52:21+07:00",
+      "source_commit": "8a3b1d7f",
+      "inherited_at": "2026-09-21T09:58:56+07:00",
       "files": {
         "SKILL.md": "99acc12a22306aee19be235d935426525f1e890a6657bc0bf1192dd1f2d5244f",
         "VERSION.json": "c37571204a8856208117254f1a8429b2243fd7868bab85621a0319b773f22d61",
@@ -7540,8 +7504,8 @@
       "origin": "active",
       "version": "1.0.1",
       "source_path": ".agents/skills/sk-scope-switch",
-      "source_commit": "fa3d83a8",
-      "inherited_at": "2026-09-19T23:52:21+07:00",
+      "source_commit": "8a3b1d7f",
+      "inherited_at": "2026-09-21T09:58:56+07:00",
       "files": {
         "SKILL.md": "9cdc8a2cfcbff605bd0588d02f5663ca877679a0bf38a3fef1a54107df8ac429",
         "VERSION.json": "fd30db0d044381959d94143c26331c5a487b13abb40d1a93a23166048b68954b",
@@ -7586,8 +7550,8 @@
       "origin": "active",
       "version": "1.0.1",
       "source_path": ".agents/skills/sk-config-doctor",
-      "source_commit": "fa3d83a8",
-      "inherited_at": "2026-09-19T23:52:21+07:00",
+      "source_commit": "8a3b1d7f",
+      "inherited_at": "2026-09-21T09:58:56+07:00",
       "files": {
         "SKILL.md": "4c0b21c5137843a8e099e1a1f526982948f5f660bdf9d7402fe300875ac4b6fb",
         "VERSION.json": "3df476f0808130b8635f53084a012bf917f0b3cb5f12e3ad2a46d3ba87b9872d",
@@ -7632,8 +7596,8 @@
       "origin": "active",
       "version": "1.7.1",
       "source_path": ".agents/skills/sk-skill-manager",
-      "source_commit": "fa3d83a8",
-      "inherited_at": "2026-09-19T23:52:21+07:00",
+      "source_commit": "8a3b1d7f",
+      "inherited_at": "2026-09-21T09:58:56+07:00",
       "files": {
         "SKILL.md": "e86558ddbb2e2709a1e4d4db3df02512854c035f40aad80f47e248cadae927b8",
         "VERSION.json": "f634d039b33462d9f7e0e7e766cbdf3abaa8834b61add2a41d4ba6069159c711",
@@ -7658,7 +7622,7 @@
         "assets/repo-templates/categories/planning.md": "6c69a5d1999e3b02b278bcfb2c302d72c700a2fe695e2a111fb125ee31061674",
         "assets/repo-templates/categories/skill-improvement.md": "5dcc813f12bfc42791082eae50b296bc895c570bcad57a391a757a89130c5df4",
         "assets/repo-templates/gitignore": "e3b69e8a8dda2c9409485a209361e40b75ed3da05614e4516f3119bca112e98b",
-        "assets/role-recommendations.yaml": "53a445b3c65cc3b2616ab9347096259e311f3b79af045a71d8aed8b05874b700",
+        "assets/role-recommendations.yaml": "a4e4991c64fd71dc5cc0dcde37b2c17ca1101559808928bfe2062ccefcb6e8e6",
         "config.defaults.yaml": "b29d44a5d5fe3fad302b9a6a28067da47ba6cbbbd6233812860cb9b4e1099276",
         "references/publication-split.md": "eaa207160300216464e5a4682db897319a677a4681f24eeef1edcb3f17d4bc90",
         "references/skill-repo-layout.md": "5ae02cd686a080a139c0d0282a3f0caf61e68ee668906b3a28588594f9e7d467",
@@ -7670,7 +7634,7 @@
         "scripts/skill-repo-readmes-private.mjs": "842ba16cdc5c6451fdbd3e63b18ef092d0103e1c0c140fdbe28d709da7c8d55e",
         "scripts/skill-repo-readmes-public.mjs": "913942b4f25eab31890ba728553838349477629823afcdce8360e22b623d6862",
         "scripts/skill-search.mjs": "63daac8ee2709c8d2fd00faae31d942e7b526c58cce2e9d1fb8a0138f3f01aeb",
-        "skill.manifest.yaml": "d337ccd8918608fed84e3930e9803c2835e270b0212e99b7245add3a98c90467",
+        "skill.manifest.yaml": "40b1b3288c27fd3476041e1440c6e60a3974cffd69d1ea4d01ff25cc031d0745",
         "skill.yaml": "94f31a3165a335c6e95bb329ee0e2dc50523daaef1a8ecbcaa55ab83ba23e04b"
       },
       "selection_reasons": [
@@ -7679,7 +7643,7 @@
       ],
       "projection": {
         "copied_files": 37,
-        "copied_bytes": 311457,
+        "copied_bytes": 311859,
         "excluded_files": 1,
         "excluded_bytes": 2557,
         "excluded_by_class": {
@@ -7714,8 +7678,8 @@
       "origin": "active",
       "version": "1.4.1",
       "source_path": ".agents/skills/sk-framework-core",
-      "source_commit": "fa3d83a8",
-      "inherited_at": "2026-09-19T23:52:21+07:00",
+      "source_commit": "8a3b1d7f",
+      "inherited_at": "2026-09-21T09:58:56+07:00",
       "files": {
         "SKILL.md": "f5ae96d5a00ad9c73d67512cbe0dc18d63fe7e2642ae5ddf53adb4df6588ff26",
         "VERSION.json": "3f56876a0eb5f68b65c539de0e8678595e9e54746018309d5cd32e93df6f52d6",
@@ -7775,8 +7739,8 @@
       "origin": "active",
       "version": "2.9.0",
       "source_path": ".agents/skills/sk-publish-core",
-      "source_commit": "fa3d83a8",
-      "inherited_at": "2026-09-19T23:52:21+07:00",
+      "source_commit": "8a3b1d7f",
+      "inherited_at": "2026-09-21T09:58:56+07:00",
       "files": {
         "SKILL.md": "3fb70f1834d6898a196789907cf50e46d61f93d94e75dda0673443928eb23c21",
         "VERSION.json": "0f7ef2963f6c40992f5ded4adef1e456b83354ab09a6fdc435fc44e0e2ff311f",

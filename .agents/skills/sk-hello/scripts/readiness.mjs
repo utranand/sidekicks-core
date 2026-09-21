@@ -1027,9 +1027,13 @@ function buildChecks() {
     });
   }
 
-  // 9) BMAD Method — see the helper block above. CLAUDE.md's rule.bmad-first makes
-  //    the BMAD chain mandatory for service code, and every sk-bmad-* skill
-  //    delegates to a /bmad:… slash command. Neither the command stubs nor the
+  // 9) BMAD Method — see the helper block above. Every sk-bmad-* skill delegates to a
+  //    /bmad:… slash command, so a repo carrying those skills needs the upstream tree
+  //    for them to work at all. That — not any mandate — is what this row reports:
+  //    rule.bmad-first is a SETTING, and it resolves `disabled` in this checkout, so
+  //    service code is not required to take the BMAD route. The native delivery skills
+  //    need nothing installed beyond themselves — no external tree, no command stubs —
+  //    which is why that route has no readiness row at all. Neither the command stubs nor the
   //    bmad/ module tree is installable by us (the upstream installer is
   //    interactive), so this row is REPORT-ONLY: apply: null, never an auto-clone.
   //

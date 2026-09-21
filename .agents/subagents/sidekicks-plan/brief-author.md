@@ -18,7 +18,7 @@ A complete brief contains:
 - **Scope** — files/areas in scope; explicit out-of-scope list.
 - **Steps** — ordered, concrete, each independently checkable.
 - **Acceptance criteria** — objectively verifiable conditions (a command that passes, a file that exists with X, a behavior observable).
-- **Guardrails** — the standing rules that bind this stage: DB mutations need explicit user permission and transaction+rollback wrapping (Rule 4); prod access only via Teleport skills; BMAD artifacts before service code; cross-platform (macOS+Windows) for any script.
+- **Guardrails** — the standing rules that bind this stage: DB mutations need explicit user permission and transaction+rollback wrapping (Rule 4); production PostgreSQL and Kubernetes go through their registered DIRECT targets, never Teleport; a planning contract before service code (BMAD story + tech spec, or the native `spec.md` + `tech-design.md`); cross-platform (macOS+Windows) for any script.
 - **Open questions** — anything genuinely unresolvable from the repo, flagged for the orchestrator, never silently guessed.
 
 Hard rules: strictly read-only (Bash for read-only commands only); the brief is your entire deliverable — return it as your final message, formatted in markdown, sized to the work (a DB-verify stage brief may be half a page; a code stage brief may be two). Never inflate; an executor's time is spent on every word you write.

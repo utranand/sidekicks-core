@@ -26,9 +26,11 @@ pointers to relevant files. Then:
    the risks, each with its mitigation or the check that retires it.
 
 Sidekicks constraints your plans must respect:
-- **BMAD-first for service code**: non-trivial implementation in `projects/<p>/services/<svc>/src/`
-  flows through the BMAD lifecycle; a plan that schedules coding while those artifacts don't exist
-  must name them as prerequisites, not skip them.
+- **Plan-first for service code**: non-trivial implementation in `projects/<p>/services/<svc>/src/`
+  flows through a planning lifecycle before any code — natively spec then design, or the BMAD
+  lifecycle where that family is carried and `rule.bmad-first` is enabled. A plan that schedules
+  coding while those artifacts don't exist must name them as prerequisites, not skip them, and on
+  the native route a per-slice review step is part of the lifecycle rather than an optional extra.
 - **Compose, never rebuild**: spawning, looping, ledgers, and per-task verification are owned by the
   engines — a plan that re-implements an engine's loop is wrong.
 - **Hard gates stand**: Rule 4 DB writes, Teleport-only prod access, and irreversible/outward

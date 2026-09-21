@@ -121,7 +121,7 @@ bundle:
   assets/repo-templates/categories/planning.md: sha256:6c69a5d1999e3b02b278bcfb2c302d72c700a2fe695e2a111fb125ee31061674
   assets/repo-templates/categories/skill-improvement.md: sha256:5dcc813f12bfc42791082eae50b296bc895c570bcad57a391a757a89130c5df4
   assets/repo-templates/gitignore: sha256:e3b69e8a8dda2c9409485a209361e40b75ed3da05614e4516f3119bca112e98b
-  assets/role-recommendations.yaml: sha256:53a445b3c65cc3b2616ab9347096259e311f3b79af045a71d8aed8b05874b700
+  assets/role-recommendations.yaml: sha256:a4e4991c64fd71dc5cc0dcde37b2c17ca1101559808928bfe2062ccefcb6e8e6
   config.defaults.yaml: sha256:b29d44a5d5fe3fad302b9a6a28067da47ba6cbbbd6233812860cb9b4e1099276
   references/publication-split.md: sha256:eaa207160300216464e5a4682db897319a677a4681f24eeef1edcb3f17d4bc90
   references/skill-repo-layout.md: sha256:5ae02cd686a080a139c0d0282a3f0caf61e68ee668906b3a28588594f9e7d467

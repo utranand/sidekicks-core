@@ -2,18 +2,27 @@
 # point, not a second catalog. Categories and exact skill picks are additive selections resolved by
 # scripts/role-recommendations.mjs.
 
+# The native delivery route is listed first per role; the sk-bmad-* picks below it are the
+# legacy equivalents, kept for a runtime that carries that family. A recommendation naming a
+# skill this repo does not carry is dropped by role-recommendations.mjs, so listing both is
+# safe either way.
 roles:
   PM:
+    - sk-spec-planner
     - sk-bmad-pm
     - sk-bmad-create-story
   BA:
     - sk-feasibility-probe
+    - sk-spec-planner
     - sk-bmad-validate-prd
   SA:
     - sk-project-architect
+    - sk-design-author
     - sk-bmad-create-architecture
     - sk-bmad-validate-architect
   Developer:
+    - sk-developer
+    - sk-code-review
     - sk-bmad-developer
     - sk-bmad-code-review
     - sk-test-gate
