@@ -1,0 +1,46 @@
+{
+  "//": "EXAMPLE — named orchestration presets, read by `sidekicks goal` and sk-cli-orchestrator.",
+  "//1": "DO NOT hand-edit the live file. Manage it only with the CLI verbs (Rule 1 — .sidekicks/ is the",
+  "//2": "CLI write surface): `sidekicks cli-executor preset list|show|set|remove`. This example documents the shape.",
+  "//3": "Live file is scope-resolved: root -> .sidekicks/config/cli-orchestration-presets.json ; project -> projects/<active>/config/cli-orchestration-presets.json.",
+  "//4": "A MISSING file is not an error — there are no built-in presets, so an absent file simply means this scope declares none and every no-preset path behaves exactly as before.",
+  "//5": "`presets` ships EMPTY on purpose: a preset names concrete executors and tiers, and which of those exist is a property of THIS machine's registry. A seeded example would be a routing recommendation nobody made.",
+  "//6": "A preset pins one executor + model tier + exact model + optional reasoning effort per role. Declare one with:",
+  "//7": "  sidekicks cli-executor preset set codex-build-claude-review --host-cli codex --planner codex:high:high --implementer codex:mid:medium --reviewer claude:high --final-verifier claude:top:max [--advisor codex:top]",
+  "//8": "Roles: `planner`, `implementer`, `reviewer` are required; `final_verifier` is optional and INHERITS the reviewer when absent; `advisor` is ALWAYS written — the read-only top-tier consultant. With no --advisor, `preset set` stores the preset's host CLI at `top` (or provider-neutral `auto:top` when that CLI cannot hold it); `--advisor ''` resets it to that default, never drops it. An advisor below `top` is refused.",
+  "//9": "Each role is { \"executor\": <registered name>, \"model_tier\": top|high|mid|low, \"model\": <versioned model ref, e.g. anthropic/claude-opus@5.5>, \"effort\": <optional, non-empty string> }. `model` is pinned by the CLI from the registry's tier map at write time, so a later tier remap cannot move the preset; `sidekicks cli-executor preset pin [<name>...] [--repin]` backfills older presets and refreshes pins deliberately. `auto` pins no model. An absent effort means the executor's own `efforts` tier map, then the provider default.",
+  "//9a": "The stored shape `preset set` writes (seats may also live in the root `seats` map and be referenced by name through a preset's `roles`):",
+  "//9b": {
+    "host_cli": "codex",
+    "planner": {
+      "executor": "codex",
+      "model_tier": "high",
+      "model": "openai/gpt@6/sol",
+      "effort": "high"
+    },
+    "implementer": {
+      "executor": "antigravity",
+      "model_tier": "mid",
+      "model": "google/gemini-flash@3.8/medium"
+    },
+    "reviewer": {
+      "executor": "claude",
+      "model_tier": "high",
+      "model": "anthropic/claude-opus@5.5"
+    },
+    "advisor": {
+      "executor": "codex",
+      "model_tier": "top",
+      "model": "openai/gpt@6/astra"
+    }
+  },
+  "//10": "`allow_same_family_review` (default false) is the explicit opt-in for a reviewer from the implementer's own provider family — recorded in state and in the report when it applies.",
+  "//11": "`fallback` bounds what happens when a pinned seat cannot run: { \"mode\": \"default-routing\" | \"none\", \"max_role_fallbacks\": <integer >= 0, default 1> }. `none` is the durable form of `goal run --preset-strict`.",
+  "//12": "A preset is RESOLVED at `goal plan --preset <name>` and the resolved snapshot is frozen into the approval envelope digest — editing the preset afterwards cannot reach an approved run.",
+  "//13": "`default_preset` names the preset `goal plan` binds when the operator passes no --preset (set it with `sidekicks cli-executor preset default <name>`, clear it with --clear). It yields to --no-preset, an explicit --preset, and --executor/--tier/--contest; the pickup is announced above the approval summary.",
+  "//13a": "ROOT-ONLY, unlike the presets themselves: the key belongs in .sidekicks/config/cli-orchestration-presets.json alone, `preset default` reads and writes that file whatever project is active, and a PROJECT file declaring the key is refused on read — a bare `goal plan` must not route differently depending on which project happens to be active.",
+  "//14": "NO FALLBACK EXISTS for an unsafe implementation failure (a hard-stopped action, a write-boundary violation, unknown child ownership), whatever `fallback.mode` says.",
+  "schema_version": 2,
+  "default_preset": null,
+  "presets": {}
+}
