@@ -1,0 +1,18 @@
+{
+  "name": "cli-orchestrator-lifecycle",
+  "version": "1.6.0",
+  "description": "Queue-supervisor strict import, fenced lifecycle, leased recovery, and explicit legacy migration",
+  "files": [
+    "commands.mjs",
+    "compiler.mjs",
+    "driver.mjs",
+    "file-assert.mjs",
+    "import.mjs",
+    "migrate.mjs",
+    "schema.mjs",
+    "state-machine.mjs",
+    "supervise.mjs",
+    "supervisor-lease.mjs",
+    "supervisor.mjs"
+  ]
+}

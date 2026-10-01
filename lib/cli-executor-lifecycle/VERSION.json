@@ -1,6 +1,6 @@
 {
   "name": "cli-executor-lifecycle",
-  "version": "1.3.0",
+  "version": "1.5.0",
   "description": "cli-executor-lifecycle library component",
   "files": [
     "_python.mjs",
@@ -16,6 +16,8 @@
     "register.mjs",
     "remove.mjs",
     "route.mjs",
-    "sync.mjs"
+    "sync.mjs",
+    "task-verb.mjs",
+    "task.mjs"
   ]
 }

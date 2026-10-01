@@ -31,6 +31,17 @@
         ]
       },
       {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/enforce-db-offload.mjs\"",
+            "timeout": 10,
+            "statusMessage": "Guarding parked database aliases"
+          }
+        ]
+      },
+      {
         "matcher": "Bash",
         "hooks": [
           {
@@ -51,9 +62,26 @@
           },
           {
             "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/enforce-db-offload.mjs\"",
+            "timeout": 10,
+            "statusMessage": "Guarding parked database aliases"
+          },
+          {
+            "type": "command",
             "command": "node \"$CLAUDE_PROJECT_DIR/scripts/memory-trigger-hook.mjs\"",
             "timeout": 20,
             "statusMessage": "Loading memory for this category"
+          }
+        ]
+      },
+      {
+        "matcher": "Read|Grep|Glob",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/enforce-db-offload.mjs\"",
+            "timeout": 10,
+            "statusMessage": "Guarding parked database aliases"
           }
         ]
       }

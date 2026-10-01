@@ -86,6 +86,26 @@ command = "node scripts/enforce-branch-safety.mjs"
 statusMessage = "Guarding the shared working tree"
 timeout = 10
 
+# enforce-db-offload: guards the OFFLOAD contract (`sidekicks database offload`, v2 "comment-out
+# parking" mechanic). Once an alias is parked (its lines `#[offloaded]`-prefixed in place inside
+# `database_connector:` / `teleport_database_connector:`), this hook DENIES a direct read/copy of
+# `database.secret.yaml` / `pending-removal.*.yaml` (incl. glob forms) from a shell command OR a
+# Read/Grep/Glob tool call, DENIES a psql/pg_dump/pg_dumpall/pg_restore/pgcli (flag incl.
+# `-hHOST`/`-dDB` attached, conninfo string, URI, or PGHOST/PGDATABASE/`export`ed env form) or an
+# inline psycopg2/pg.Client connect whose host+dbname matches a parked target, DENIES
+# `tsh proxy db`/`tsh db connect|login` to a parked Teleport cluster+db_name, and ASKS on a host
+# match with no database named, on PGSERVICE/service=, on an opaque host, on
+# `sidekicks database offload ... --restore` (consent every time, never self-granted), and on an
+# Edit/Write/MultiEdit/`sed -i`/`perl -i`/redirect that would strip a `#[offloaded]` marker. Same
+# script as Claude's PreToolUse(Bash + Read|Grep|Glob + Edit|Write|MultiEdit) wiring — Codex has no
+# matcher, so this single registration already sees every tool call. This is a FLOOR hook
+# (lib/framework-settings/floor.mjs) — no per-command escape hatch exists for it.
+[[hooks.PreToolUse.hooks]]
+type = "command"
+command = "node scripts/enforce-db-offload.mjs"
+statusMessage = "Guarding parked database aliases"
+timeout = 10
+
 # memory-trigger: SessionStart loads only the memory CATEGORY MAP (~300 tokens); this is
 # what delivers the bodies, once per category per session, right before the first action
 # of that category runs. Codex has no PreToolUse matcher, so the hook receives every tool

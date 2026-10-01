@@ -1,0 +1,9 @@
+{
+  "name": "delivery-policy",
+  "version": "1.0.0",
+  "description": "delivery-policy library component",
+  "files": [
+    "index.mjs",
+    "policy.mjs"
+  ]
+}

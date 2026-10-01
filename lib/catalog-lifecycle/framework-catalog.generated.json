@@ -1,12 +1,16 @@
 {
   "schema_version": 1,
   "cli": {
-    "namespace_count": 21,
-    "command_count": 170,
+    "namespace_count": 26,
+    "command_count": 187,
     "namespaces": [
       {
         "namespace": "agent",
         "command_count": 24
+      },
+      {
+        "namespace": "agy",
+        "command_count": 1
       },
       {
         "namespace": "artifacts",
@@ -29,12 +33,24 @@
         "command_count": 1
       },
       {
+        "namespace": "claude",
+        "command_count": 1
+      },
+      {
         "namespace": "cli-executor",
-        "command_count": 10
+        "command_count": 11
+      },
+      {
+        "namespace": "cli-orchestrator",
+        "command_count": 3
+      },
+      {
+        "namespace": "codex",
+        "command_count": 1
       },
       {
         "namespace": "config",
-        "command_count": 8
+        "command_count": 9
       },
       {
         "namespace": "core",
@@ -42,7 +58,11 @@
       },
       {
         "namespace": "database",
-        "command_count": 4
+        "command_count": 7
+      },
+      {
+        "namespace": "execution",
+        "command_count": 5
       },
       {
         "namespace": "framework",
@@ -50,7 +70,7 @@
       },
       {
         "namespace": "goal",
-        "command_count": 8
+        "command_count": 9
       },
       {
         "namespace": "index",
@@ -307,6 +327,15 @@
         "module": "lib/agent-lifecycle/wait.mjs"
       },
       {
+        "id": "cli:agy/task",
+        "namespace": "agy",
+        "verb": "task",
+        "args": "\"<task>\" | --prompt-file <path|-> [--model <id>] [--effort <value>] [--tier top|high|mid|low] [--role plan|implement|review|final-verify] [--work-dir <path>] [--timeout <ms>] [--dry-run] [--json]",
+        "summary": "Assign exactly one fresh, self-contained task to the built-in antigravity executor (Antigravity (agy) CLI). Model: --model, else --tier's mapped id, else the registered default_model; effort: --effort, else the tier's effort, else default_effort. Defaults to the read-only plan role; never loops, resumes, or substitutes another executor",
+        "status": "implemented",
+        "module": "lib/agy-lifecycle/task.mjs"
+      },
+      {
         "id": "cli:artifacts/archive",
         "namespace": "artifacts",
         "verb": "archive",
@@ -409,7 +438,7 @@
         "id": "cli:bedrock/task",
         "namespace": "bedrock",
         "verb": "task",
-        "args": "\"<task>\" | --prompt-file <path|-> [--role plan|implement|review|final-verify] [--tier top|high|mid|low] [--work-dir <path>] [--timeout <ms>] [--effort <value>] [--dry-run] [--json]",
+        "args": "\"<task>\" | --prompt-file <path|-> [--role plan|implement|review|final-verify] [--model <id>] [--tier top|high|mid|low] [--work-dir <path>] [--timeout <ms>] [--effort <value>] [--dry-run] [--json]",
         "summary": "Assign exactly one fresh, self-contained task to the registered bedrock-llm executor; defaults to read-only plan role at mid tier and never loops, resumes, or silently substitutes another executor",
         "status": "implemented",
         "module": "lib/bedrock-lifecycle/task.mjs"
@@ -496,6 +525,15 @@
         "module": "lib/check-lifecycle/run.mjs"
       },
       {
+        "id": "cli:claude/task",
+        "namespace": "claude",
+        "verb": "task",
+        "args": "\"<task>\" | --prompt-file <path|-> [--model <id>] [--effort <value>] [--tier top|high|mid|low] [--role plan|implement|review|final-verify] [--work-dir <path>] [--timeout <ms>] [--dry-run] [--json]",
+        "summary": "Assign exactly one fresh, self-contained task to the built-in claude executor (Claude Code CLI). Model: --model, else --tier's mapped id, else the registered default_model; effort: --effort, else the tier's effort, else default_effort. Defaults to the read-only plan role; never loops, resumes, or substitutes another executor",
+        "status": "implemented",
+        "module": "lib/claude-lifecycle/task.mjs"
+      },
+      {
         "id": "cli:cli-executor/auth",
         "namespace": "cli-executor",
         "verb": "auth",
@@ -535,8 +573,8 @@
         "id": "cli:cli-executor/models",
         "namespace": "cli-executor",
         "verb": "models",
-        "args": "[<name>...] [--refresh] [--root] [--json]",
-        "summary": "Reconcile each executor's selected model tiers against its discovered catalog: per-tier valid/stale/unverified/unmapped, plus the catalog models no tier has claimed and the exact `register --model-<tier>` line to bind one. Run this when a vendor ships a new model. Advisory — it NEVER remaps a tier (a catalog row carries no tier hint, so the choice is the operator's); --refresh updates the capability snapshot only, through the same discover+sync path. Exits 2 on drift: a selected model absent from a complete catalog, or a CLI discovery reported unavailable",
+        "args": "[<name>...] [--refresh] [--migrate] [--canonicalize] [--bind <executor> <invoke_id>...] [--root] [--json]",
+        "summary": "Inspect selected tiers and catalog drift; refresh never remaps a tier. Explicit --migrate upgrades v2 selections to executor-scoped opaque canonical references with committed invocation bindings and moves capability observations into git-ignored state. Explicit --canonicalize rewrites opaque selections and bindings to readable provider/line@version references where the id names a version, parking the replaced references. Explicit --bind registers provider model ids as invocation bindings on one executor without selecting them for a tier",
         "status": "implemented",
         "module": "lib/cli-executor-lifecycle/models.mjs"
       },
@@ -544,8 +582,8 @@
         "id": "cli:cli-executor/preset",
         "namespace": "cli-executor",
         "verb": "preset",
-        "args": "[list] | show <name> | set <name> [--host-cli <cli>] [--planner <exec>:<tier>[:<effort>]] [--implementer ...] [--reviewer ...] [--final-verifier ...] [--allow-same-family-review|--no-allow-same-family-review] [--fallback default-routing|none] [--max-role-fallbacks <n>] | remove <name> | default [<name>|--clear] [--root] [--json]",
-        "summary": "Named orchestration presets: pin the host CLI plus one executor, model tier and optional reasoning effort per goal-engine role (planner, implementer, reviewer, optional final verifier that inherits the reviewer). `goal plan --preset <name>` then routes every phase deterministically and FREEZES the resolved snapshot into the approval envelope, so a preset edited afterwards cannot reach an approved run. `set` refuses a preset the live registry cannot honour — an unsupported role, an unmapped tier, a model or effort absent from a complete catalog, or a reviewer sharing the implementer's family without an explicit same-family opt-in. `default <name>` records the scope's `default_preset` — the preset `goal plan` binds when no --preset is given (`--no-preset` declines it, and --contest/--executor/--tier take precedence); `default` alone reports it, `default --clear` removes it. Scope-resolved root/project like the executor registry",
+        "args": "[list] | show <name> | set <name> … | remove <name> | default [<name>|--clear] | host-default [<host> <preset|--clear>] | migrate | pin [<name>...] [--repin] | resolve [--role <role>] [--preset <name>|--no-preset] [--host-cli <name>] [--advisor <executor>:top] [--purpose plan-advice|solution-advice|recovery-advice] | advise --prompt <text>|--prompt-file <path> [--preset <name>|--no-preset] [--host-cli <name>] [--advisor <executor>:top] [--purpose plan-advice|solution-advice|recovery-advice] [--failure-facts-file <path>]",
+        "summary": "Manage named role presets and host defaults. `resolve` prints a concrete binding without dispatch; `advise` invokes a read-only top-tier advisor, with at most one provider-neutral fallback. Recovery advice requires structured failure facts and 1-3 evidenced alternatives; goal runs persist and bound consultations separately. Every written preset carries a top-tier advisor and pins each seat to the exact versioned model its tier maps; `preset pin` backfills older presets (`--repin` refreshes pins after a tier remap). Explicitly migrate v1 declarations with `preset migrate`; goal plans freeze selected bindings before approval",
         "status": "implemented",
         "module": "lib/cli-executor-lifecycle/preset.mjs"
       },
@@ -553,8 +591,8 @@
         "id": "cli:cli-executor/register",
         "namespace": "cli-executor",
         "verb": "register",
-        "args": "<name> [--root|--inherit] [--binary <exe>] [--invoke '<a,{brief}>'] [--probe '<a>'] [--model-<tier> <id>] [--effort-<tier> <value>] [--specialties '<a,b>'] [--model-specialties-<tier> '<a,b>'] [--family <f>] [--description <d>] [--profile-file <path>] [--capabilities-command '<a,b>'] [--auth-status-command '<a,b>'] [--auth-renew-command '<a,b>'] [--auth-interactive]",
-        "summary": "Register/update an executor and its selected model/effort tiers (<tier> is top|high|mid|low; an EMPTY value clears just that tier, an absent flag carries the prior value forward) plus the specialty hints routing reads; generic capability and auth commands are explicit side-effect-free metadata contracts",
+        "args": "<name> [--root|--inherit] [--binary <exe>] [--invoke '<a,{brief}>'] [--probe '<a>'] [--model-<tier> <id>] [--effort-<tier> <value>] [--default-model <id>] [--default-effort <value>] [--specialties '<a,b>'] [--model-specialties-<tier> '<a,b>'] [--family <f>] [--description <d>] [--profile-file <path>] [--capabilities-command '<a,b>'] [--auth-status-command '<a,b>'] [--auth-renew-command '<a,b>'] [--auth-interactive]",
+        "summary": "Register/update an executor and its selected model/effort tiers (<tier> is top|high|mid|low; an EMPTY value clears just that tier, an absent flag carries the prior value forward) plus the single default model/effort the `<cli> task` verbs use when no --model/--tier is given, and the specialty hints routing reads; generic capability and auth commands are explicit side-effect-free metadata contracts",
         "status": "implemented",
         "module": "lib/cli-executor-lifecycle/register.mjs"
       },
@@ -584,6 +622,51 @@
         "summary": "Preview or explicitly atomically apply discovered capability snapshots",
         "status": "implemented",
         "module": "lib/cli-executor-lifecycle/sync.mjs"
+      },
+      {
+        "id": "cli:cli-executor/task",
+        "namespace": "cli-executor",
+        "verb": "task",
+        "args": "<executor> \"<task>\" | <executor> --prompt-file <path|-> [--model <id>] [--effort <value>] [--tier top|high|mid|low] [--role plan|implement|review|final-verify] [--work-dir <path>] [--timeout <ms>] [--dry-run] [--json]",
+        "summary": "Assign exactly one fresh, self-contained task to ANY registered executor — the generic form of the agy/codex/claude/bedrock task shortcuts, so a newly registered CLI needs no verb of its own. Model: --model, else --tier's mapped id, else the registered default_model (fails closed when none); effort: --effort, else the tier's effort, else default_effort. Defaults to the read-only plan role; never loops, resumes, or substitutes another executor",
+        "status": "implemented",
+        "module": "lib/cli-executor-lifecycle/task.mjs"
+      },
+      {
+        "id": "cli:cli-orchestrator/import",
+        "namespace": "cli-orchestrator",
+        "verb": "import",
+        "args": "<queue-source.json> --preset <name> --preview | --apply --expected-approval-digest <sha256> --expected-execution-revision <sha256> [--json]",
+        "summary": "Strictly compile queue-source/v1 into queue-supervisor/v1, preview every frozen binding and policy, then create a ready run only when apply repeats the exact reviewed digests",
+        "status": "implemented",
+        "module": "lib/cli-orchestrator-lifecycle/import.mjs"
+      },
+      {
+        "id": "cli:cli-orchestrator/migrate",
+        "namespace": "cli-orchestrator",
+        "verb": "migrate",
+        "args": "<legacy-source-dir> --dry-run | --apply --proposal-digest <sha256> --approval-ref <fresh-ref> --approved-by human --approved-at <rfc3339> --approval-request-digest <sha256> --source-driver <id> --target-driver queue-supervisor/v1 --target-run-id <id> [--json]",
+        "summary": "Inspect legacy evidence without mutation, or commit one explicit evidence-preserving ownership transfer bound to the exact reviewed proposal and fresh human-approval provenance",
+        "status": "implemented",
+        "module": "lib/cli-orchestrator-lifecycle/migrate.mjs"
+      },
+      {
+        "id": "cli:cli-orchestrator/supervise",
+        "namespace": "cli-orchestrator",
+        "verb": "supervise",
+        "args": "<run-id> <once|start|status|stop> [--max-cycles N] [--reason <text>] [--json]",
+        "summary": "Operate the selected queue-supervisor/v1 driver: one deterministic decision, one leased bounded polling loop, read-only status, or an independent graceful STOP signal. Unknown launch/provider ownership parks and unchanged state backs off without consuming attempts",
+        "status": "implemented",
+        "module": "lib/cli-orchestrator-lifecycle/supervise.mjs"
+      },
+      {
+        "id": "cli:codex/task",
+        "namespace": "codex",
+        "verb": "task",
+        "args": "\"<task>\" | --prompt-file <path|-> [--model <id>] [--effort <value>] [--tier top|high|mid|low] [--role plan|implement|review|final-verify] [--work-dir <path>] [--timeout <ms>] [--dry-run] [--json]",
+        "summary": "Assign exactly one fresh, self-contained task to the built-in codex executor (Codex CLI). Model: --model, else --tier's mapped id, else the registered default_model; effort: --effort, else the tier's effort, else default_effort. Defaults to the read-only plan role; never loops, resumes, or substitutes another executor",
+        "status": "implemented",
+        "module": "lib/codex-lifecycle/task.mjs"
       },
       {
         "id": "cli:config/doctor",
@@ -647,6 +730,15 @@
         "summary": "Rescan every installed skill and document its declared blocks in the scope's family files (written INERT, so they keep resolving to the skill's defaults); also materialises the settings half. --dry-run prints the plan (exit 0); --check is the CI gate (non-zero on a gap); --prune-only retires what nothing declares any more and seeds nothing",
         "status": "implemented",
         "module": "lib/config-lifecycle/sync.mjs"
+      },
+      {
+        "id": "cli:config/unset",
+        "namespace": "config",
+        "verb": "unset",
+        "args": "<block>.<key> [--root] [--json]",
+        "summary": "Mediated removal: deletes one configured key path from both the committed and secret family files",
+        "status": "implemented",
+        "module": "lib/config-lifecycle/unset.mjs"
       },
       {
         "id": "cli:config/where",
@@ -775,6 +867,24 @@
         "module": "lib/database-lifecycle/list.mjs"
       },
       {
+        "id": "cli:database/offload",
+        "namespace": "database",
+        "verb": "offload",
+        "args": "<alias>... [--match <glob>] [--tier prod|uat|sit|staging|dev|local|unknown] [--reason <text>] [--dry-run] [--json] [--root] | <alias>... --restore [--json] [--root]",
+        "summary": "PARK a database_connector/teleport_database_connector alias: every `password:` value it carries, in every scope file, is SEALED with the scope's X25519 public key (ECIES: ephemeral X25519 + HKDF-SHA256 + AES-256-GCM, AAD=alias, key fingerprint recorded in the meta line) before its lines are commented out in place (a `#[offloaded] ` marker under one `#[offloaded:meta]` stamp) — a hand-uncommented alias then carries only ciphertext and cannot authenticate; refuses when the scope has no sealing key yet, when a different key is already in use for this scope, or when a password's shape (block scalar, anchor/alias, flow-mapping-embedded, unterminated quote) cannot be safely rewritten. `--restore` is TTY-only, prompts for the sealing passphrase (hidden) to unwrap the private key and unseal, refuses non-interactively and on a key-fingerprint mismatch — `--yes` is not accepted",
+        "status": "implemented",
+        "module": "lib/database-lifecycle/offload.mjs"
+      },
+      {
+        "id": "cli:database/offloaded",
+        "namespace": "database",
+        "verb": "offloaded",
+        "args": "[--json] [--root]",
+        "summary": "List every alias `database offload` has parked in the active scope, with its derived tier, which block(s) it was parked out of, and the reason from its `#[offloaded:meta]` annotation",
+        "status": "implemented",
+        "module": "lib/database-lifecycle/offloaded.mjs"
+      },
+      {
         "id": "cli:database/remove",
         "namespace": "database",
         "verb": "remove",
@@ -784,6 +894,15 @@
         "module": "lib/database-lifecycle/remove.mjs"
       },
       {
+        "id": "cli:database/seal-init",
+        "namespace": "database",
+        "verb": "seal-init",
+        "args": "[--force] [--root]",
+        "summary": "TTY-only: generate the scope's X25519 sealing keypair (passphrase typed twice, hidden, min 12 chars) and write it to <scope>/config/db-seal.secret.yaml (mode 600, public key + private key wrapped at rest with scrypt N=2^17/r=8/p=1 then AES-256-GCM) — `database offload` needs only the public half; refuses to overwrite an existing key without --force, and even with --force refuses outright while any password in the scope is still sealed under the current key; the old key is archived to a timestamped .bak, never overwritten or deleted",
+        "status": "implemented",
+        "module": "lib/database-lifecycle/seal-init.mjs"
+      },
+      {
         "id": "cli:database/show",
         "namespace": "database",
         "verb": "show",
@@ -791,6 +910,51 @@
         "summary": "Print metadata + resolved absolute source path and exploded tree for one entry",
         "status": "implemented",
         "module": "lib/database-lifecycle/show.mjs"
+      },
+      {
+        "id": "cli:execution/doctor",
+        "namespace": "execution",
+        "verb": "doctor",
+        "args": "[--json]",
+        "summary": "Read-only compatibility check for the effective execution configuration",
+        "status": "implemented",
+        "module": "lib/execution-lifecycle/doctor.mjs"
+      },
+      {
+        "id": "cli:execution/migrate",
+        "namespace": "execution",
+        "verb": "migrate",
+        "args": "--dry-run|--apply [--json]",
+        "summary": "Preview or atomically create canonical cli-execution.json while retaining legacy read compatibility",
+        "status": "implemented",
+        "module": "lib/execution-lifecycle/migrate.mjs"
+      },
+      {
+        "id": "cli:execution/preset",
+        "namespace": "execution",
+        "verb": "preset",
+        "args": "set <name> --file <json> --expected-revision <sha256:...> [--json]",
+        "summary": "CAS-write one validated orchestration preset through the execution authority; automatically uses canonical execution storage when present and otherwise the legacy split-preset store, preserving unrelated sections and defaults",
+        "status": "implemented",
+        "module": "lib/execution-lifecycle/preset.mjs"
+      },
+      {
+        "id": "cli:execution/show",
+        "namespace": "execution",
+        "verb": "show",
+        "args": "[--json]",
+        "summary": "Effective delivery, executor registry and preset configuration with provenance; credential-shaped values are always masked",
+        "status": "implemented",
+        "module": "lib/execution-lifecycle/show.mjs"
+      },
+      {
+        "id": "cli:execution/snapshot",
+        "namespace": "execution",
+        "verb": "snapshot",
+        "args": "[--json]",
+        "summary": "Emit the versioned, redacted execution configuration snapshot suitable for diagnostics or durable run state",
+        "status": "implemented",
+        "module": "lib/execution-lifecycle/snapshot.mjs"
       },
       {
         "id": "cli:framework/check",
@@ -883,11 +1047,20 @@
         "module": "lib/goal-lifecycle/approve-action.mjs"
       },
       {
+        "id": "cli:goal/monitor",
+        "namespace": "goal",
+        "verb": "monitor",
+        "args": "<run-id> [--drive] [--max-cycles N] [--json]",
+        "summary": "Classify a goal run and, with --drive, automatically resume or run only recoverable already-approved work until a bounded terminal, live-child, or human-held gate. Never self-approves a plan digest or outward action",
+        "status": "implemented",
+        "module": "lib/goal-lifecycle/monitor.mjs"
+      },
+      {
         "id": "cli:goal/plan",
         "namespace": "goal",
         "verb": "plan",
-        "args": "\"<goal>\" | <goal-file> [--preset <name>] [--no-preset] [--executor <name>] [--host-cli <name>] [--tier top|high|mid|low] [--contest] [--planners <a,b,c>] [--json]",
-        "summary": "Turn a goal into a plan in enforced read-only mode, with explicit executor first, then an eligible process-local host hint, local policy, and stable provider-neutral fallback. A fresh independent critic gets at most two correction passes before asking the user; the command writes the goal, plan and approval envelope but dispatches no implementation. With no --preset, the scope's configured `default_preset` is bound and logged; --no-preset declines it, and --contest/--executor/--tier take precedence over it. --contest fans out by capable CLI family, cross-judges and synthesizes",
+        "args": "\"<goal>\" | <goal-file> [--preset <name>] [--no-preset] [--executor <name>] [--host-cli <name>] [--tier top|high|mid|low] [--contest] [--planners <a,b,c>] [--plan-review-epochs 1|2|3] [--json]",
+        "summary": "Turn a goal into a plan in enforced read-only mode, with explicit executor first, then an eligible process-local host hint, local policy, and stable provider-neutral fallback. A fresh independent critic gets at most two correction passes per explicitly requested review epoch; the command writes the goal, plan and approval envelope but dispatches no implementation. With no --preset, the scope's configured `default_preset` is bound and logged; --no-preset declines it, and --contest/--executor/--tier take precedence over it. --contest fans out by capable CLI family, cross-judges and synthesizes",
         "status": "implemented",
         "module": "lib/goal-lifecycle/plan.mjs"
       },
@@ -922,8 +1095,8 @@
         "id": "cli:goal/status",
         "namespace": "goal",
         "verb": "status",
-        "args": "[<run-id>] [--json]",
-        "summary": "Where a run is and what it is waiting for: phase, per-node attempts, spend, breaker, lease owner, STOP gate, sidecar divergence, held action requests and the contest scoreboard. Read-only and takes no lease, so it works while another process holds the run",
+        "args": "[<run-id>] [--json] [--monitor]",
+        "summary": "Where a run is and what it is waiting for. With --monitor <run-id>, show durable jobs, attempts, advisory decisions, routing fallbacks, child liveness, heartbeat and stale/stalled classification. Read-only and takes no lease",
         "status": "implemented",
         "module": "lib/goal-lifecycle/status.mjs"
       },
@@ -1623,16 +1796,16 @@
     ]
   },
   "framework": {
-    "entry_count": 65,
+    "entry_count": 66,
     "rule_count": 28,
     "criterion_count": 21,
-    "hook_count": 16,
-    "floor_count": 16,
+    "hook_count": 17,
+    "floor_count": 17,
     "entries": [
       {
         "id": "criterion.autopilot-subtask-isolation",
         "kind": "criterion",
-        "title": "A standalone working folder per subtask; generated results never cross subtasks",
+        "title": "Per-card isolation inside the parent workspace; generated results never cross subtasks",
         "owners": [
           "sk-jira-autopilot"
         ],
@@ -1939,6 +2112,17 @@
         "body_marker": null,
         "script": "scripts/enforce-branch-safety.mjs",
         "floor": false,
+        "source": "core"
+      },
+      {
+        "id": "hook.enforce-db-offload",
+        "kind": "hook",
+        "title": "Refuse shell/tool access to a parked (offloaded) database alias",
+        "owners": [],
+        "body_at": null,
+        "body_marker": null,
+        "script": "scripts/enforce-db-offload.mjs",
+        "floor": true,
         "source": "core"
       },
       {
@@ -2442,10 +2626,10 @@
     ]
   },
   "skills": {
-    "active_count": 107,
+    "active_count": 113,
     "parked_count": 34,
-    "edge_count": 146,
-    "hard_edge_count": 106,
+    "edge_count": 150,
+    "hard_edge_count": 110,
     "mutual_composition": [
       {
         "cycle": [
@@ -2625,6 +2809,16 @@
         "informational_refs": []
       },
       {
+        "id": "sk-agy",
+        "folder": "sk-agy",
+        "tree": ".agents/skills",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-agy",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
         "id": "sk-architect-rules",
         "folder": "sk-architect-rules",
         "tree": ".agents/skills",
@@ -2689,6 +2883,16 @@
         "informational_refs": []
       },
       {
+        "id": "sk-claude",
+        "folder": "sk-claude",
+        "tree": ".agents/skills",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-claude",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
         "id": "sk-cli",
         "folder": "sk-cli",
         "tree": ".agents/skills",
@@ -2739,6 +2943,16 @@
         "descriptor": true,
         "manifest": true,
         "logical_id": "sk-code-review",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "sk-codex",
+        "folder": "sk-codex",
+        "tree": ".agents/skills",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-codex",
         "hard_depends_on": [],
         "informational_refs": []
       },
@@ -2926,7 +3140,8 @@
           "sk-jira-autopilot",
           "sk-jira-connector",
           "sk-jira-footprint",
-          "sk-jira-ready-gate"
+          "sk-jira-ready-gate",
+          "sk-jira-workspace"
         ],
         "informational_refs": [
           "sk-forge-project-behavior"
@@ -3009,7 +3224,9 @@
           "sk-sequence-planner",
           "sk-task-planner"
         ],
-        "informational_refs": []
+        "informational_refs": [
+          "sk-plan-to-cli-queue"
+        ]
       },
       {
         "id": "sk-hello",
@@ -3019,10 +3236,7 @@
         "manifest": true,
         "logical_id": "sk-hello",
         "hard_depends_on": [],
-        "informational_refs": [
-          "caveman",
-          "sk-skill-manager"
-        ]
+        "informational_refs": []
       },
       {
         "id": "sk-implementation-planner",
@@ -3075,7 +3289,8 @@
         "hard_depends_on": [
           "sk-jira-connector",
           "sk-jira-footprint",
-          "sk-jira-ready-gate"
+          "sk-jira-ready-gate",
+          "sk-jira-workspace"
         ],
         "informational_refs": [
           "sk-code-review",
@@ -3219,6 +3434,7 @@
         "manifest": true,
         "logical_id": "sk-jira-workspace",
         "hard_depends_on": [
+          "sk-database-connector",
           "sk-jira-connector",
           "sk-jira-harvest",
           "sk-jira-rules"
@@ -3264,6 +3480,28 @@
         "descriptor": false,
         "manifest": true,
         "logical_id": "sk-parity-keeper",
+        "hard_depends_on": [],
+        "informational_refs": []
+      },
+      {
+        "id": "sk-plan-to-cli-queue",
+        "folder": "sk-plan-to-cli-queue",
+        "tree": ".agents/skills",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-plan-to-cli-queue",
+        "hard_depends_on": [],
+        "informational_refs": [
+          "sk-cli-orchestrator"
+        ]
+      },
+      {
+        "id": "sk-prompt-to-plan",
+        "folder": "sk-prompt-to-plan",
+        "tree": ".agents/skills",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-prompt-to-plan",
         "hard_depends_on": [],
         "informational_refs": []
       },
@@ -3356,6 +3594,18 @@
         "hard_depends_on": [
           "sk-commander",
           "sk-teleport-database-connector"
+        ],
+        "informational_refs": []
+      },
+      {
+        "id": "sk-shp-apply-cid",
+        "folder": "sk-shp-apply-cid",
+        "tree": ".agents/skills",
+        "descriptor": true,
+        "manifest": true,
+        "logical_id": "sk-shp-apply-cid",
+        "hard_depends_on": [
+          "sk-database-connector"
         ],
         "informational_refs": []
       },
@@ -4484,6 +4734,15 @@
         "parked_source": false
       },
       {
+        "from": "sk-get-jira-done",
+        "from_folder": "sk-get-jira-done",
+        "to_folder": "sk-jira-workspace",
+        "how": "subprocess",
+        "kind": "hard",
+        "acquisition": false,
+        "parked_source": false
+      },
+      {
         "from": "sk-get-plan-done",
         "from_folder": "sk-get-plan-done",
         "to_folder": "sk-commander",
@@ -4684,6 +4943,15 @@
       {
         "from": "sk-goal",
         "from_folder": "sk-goal",
+        "to_folder": "sk-plan-to-cli-queue",
+        "how": "prose",
+        "kind": "informational",
+        "acquisition": false,
+        "parked_source": false
+      },
+      {
+        "from": "sk-goal",
+        "from_folder": "sk-goal",
         "to_folder": "sk-sequence-planner",
         "how": "handoff",
         "kind": "hard",
@@ -4696,24 +4964,6 @@
         "to_folder": "sk-task-planner",
         "how": "handoff",
         "kind": "hard",
-        "acquisition": false,
-        "parked_source": false
-      },
-      {
-        "from": "sk-hello",
-        "from_folder": "sk-hello",
-        "to_folder": "caveman",
-        "how": "prose",
-        "kind": "informational",
-        "acquisition": false,
-        "parked_source": false
-      },
-      {
-        "from": "sk-hello",
-        "from_folder": "sk-hello",
-        "to_folder": "sk-skill-manager",
-        "how": "subprocess",
-        "kind": "informational",
         "acquisition": false,
         "parked_source": false
       },
@@ -4830,6 +5080,15 @@
         "from_folder": "sk-jira-autopilot",
         "to_folder": "sk-jira-ready-gate",
         "how": "handoff",
+        "kind": "hard",
+        "acquisition": false,
+        "parked_source": false
+      },
+      {
+        "from": "sk-jira-autopilot",
+        "from_folder": "sk-jira-autopilot",
+        "to_folder": "sk-jira-workspace",
+        "how": "subprocess",
         "kind": "hard",
         "acquisition": false,
         "parked_source": false
@@ -5134,6 +5393,15 @@
       {
         "from": "sk-jira-workspace",
         "from_folder": "sk-jira-workspace",
+        "to_folder": "sk-database-connector",
+        "how": "handoff",
+        "kind": "hard",
+        "acquisition": false,
+        "parked_source": false
+      },
+      {
+        "from": "sk-jira-workspace",
+        "from_folder": "sk-jira-workspace",
         "to_folder": "sk-jira-connector",
         "how": "subprocess",
         "kind": "hard",
@@ -5164,6 +5432,15 @@
         "to_folder": "sk-cli-executor",
         "how": "subprocess",
         "kind": "hard",
+        "acquisition": false,
+        "parked_source": false
+      },
+      {
+        "from": "sk-plan-to-cli-queue",
+        "from_folder": "sk-plan-to-cli-queue",
+        "to_folder": "sk-cli-orchestrator",
+        "how": "prose",
+        "kind": "informational",
         "acquisition": false,
         "parked_source": false
       },
@@ -5273,6 +5550,15 @@
         "how": "subprocess",
         "kind": "hard",
         "acquisition": false,
+        "parked_source": false
+      },
+      {
+        "from": "sk-shp-apply-cid",
+        "from_folder": "sk-shp-apply-cid",
+        "to_folder": "sk-database-connector",
+        "how": "import",
+        "kind": "hard",
+        "acquisition": true,
         "parked_source": false
       },
       {
@@ -5459,7 +5745,7 @@
   },
   "config": {
     "family_count": 16,
-    "block_count": 52,
+    "block_count": 53,
     "families": [
       {
         "family": "agents",
@@ -5487,7 +5773,7 @@
       },
       {
         "family": "delivery",
-        "block_count": 2
+        "block_count": 3
       },
       {
         "family": "figma",
@@ -6121,6 +6407,27 @@
         "source": "core"
       },
       {
+        "id": "config:multi_cli_execution",
+        "block": "multi_cli_execution",
+        "family": "delivery",
+        "file": "delivery.yaml",
+        "secret_file": "delivery.secret.yaml",
+        "title": "Automated multi-CLI delivery policy and frozen implementation binding",
+        "owners": [],
+        "readers": [
+          "lib/delivery-policy/policy.mjs",
+          "lib/goal-lifecycle/plan.mjs",
+          "lib/goal-lifecycle/runner.mjs"
+        ],
+        "aliases": [],
+        "public_keys": [],
+        "scope": "any",
+        "inherits_root": true,
+        "merge": "whole_block",
+        "defaults": null,
+        "source": "core"
+      },
+      {
         "id": "config:office",
         "block": "office",
         "family": "agents",
@@ -6550,7 +6857,7 @@
   "executors": {
     "registry_file": ".sidekicks/config/cli-executors.json",
     "registry_present": true,
-    "executor_count": 6,
+    "executor_count": 5,
     "routing_prefer": [],
     "executors": [
       {
@@ -6608,23 +6915,6 @@
         "specialty_count": 5
       },
       {
-        "id": "executor:claude-bedrock-worker",
-        "name": "claude-bedrock-worker",
-        "builtin": false,
-        "registered": true,
-        "kind": "generic",
-        "enabled": true,
-        "transport": "json",
-        "sandbox": "cli-sandbox",
-        "usage_exposed": false,
-        "description": "Claude Code worker routed through the Bedrock LiteLLM gateway; file tools only, supervisor verifies the Git-derived delta and tests",
-        "model_tiers": [
-          "low",
-          "mid"
-        ],
-        "specialty_count": 3
-      },
-      {
         "id": "executor:codex",
         "name": "codex",
         "builtin": true,
@@ -6641,24 +6931,26 @@
           "mid",
           "top"
         ],
-        "specialty_count": 5
+        "specialty_count": 6
       },
       {
-        "id": "executor:codex-bedrock-worker",
-        "name": "codex-bedrock-worker",
+        "id": "executor:grok",
+        "name": "grok",
         "builtin": false,
         "registered": true,
         "kind": "generic",
         "enabled": true,
         "transport": "json",
-        "sandbox": "cli-sandbox",
-        "usage_exposed": false,
-        "description": "Codex CLI worker routed through the Bedrock LiteLLM gateway (codex --profile bedrock-llm); OS sandbox confines writes to the workspace and disables network",
+        "sandbox": "kernel-sandbox",
+        "usage_exposed": true,
+        "description": "Grok Build CLI (grok -p). Never select grok-4.7-build-fast; its token allowance is limited. Mid tier is grok-4.6.",
         "model_tiers": [
+          "high",
           "low",
-          "mid"
+          "mid",
+          "top"
         ],
-        "specialty_count": 3
+        "specialty_count": 4
       }
     ]
   },

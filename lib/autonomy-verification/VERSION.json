@@ -1,0 +1,6 @@
+{
+  "name": "autonomy-verification",
+  "version": "1.0.0",
+  "description": "Explicit opt-in fault-matrix test attestation; no runtime dispatcher or rollout defaults",
+  "files": ["VERSION.json", "fault-matrix.mjs"]
+}

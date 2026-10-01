@@ -1,0 +1,14 @@
+{
+  "name": "durable-execution",
+  "version": "1.4.2",
+  "description": "Shared durable execution schemas, fenced state, migrated ownership validation, attempt worker, and private supervisor records",
+  "files": [
+    "branch-guard.mjs",
+    "paths.mjs",
+    "process-start.mjs",
+    "schema.mjs",
+    "store.mjs",
+    "worker.mjs",
+    "workspace-evidence.mjs"
+  ]
+}

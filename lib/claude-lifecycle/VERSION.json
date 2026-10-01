@@ -1,0 +1,8 @@
+{
+  "name": "claude-lifecycle",
+  "version": "1.0.0",
+  "description": "claude-lifecycle library component",
+  "files": [
+    "task.mjs"
+  ]
+}

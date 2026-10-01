@@ -1,6 +1,6 @@
 {
   "name": "goal-lifecycle",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "goal-lifecycle library component",
   "files": [
     "approve-action.mjs",
@@ -9,6 +9,7 @@
     "contest.mjs",
     "correction.mjs",
     "evidence.mjs",
+    "execution-observation.mjs",
     "final-verify.mjs",
     "graph.mjs",
     "guard-decide.mjs",

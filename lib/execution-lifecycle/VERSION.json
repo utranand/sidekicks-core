@@ -1,0 +1,13 @@
+{
+  "name": "execution-lifecycle",
+  "version": "1.1.0",
+  "description": "execution-lifecycle library component",
+  "files": [
+    "canonical-path.mjs",
+    "doctor.mjs",
+    "migrate.mjs",
+    "preset.mjs",
+    "show.mjs",
+    "snapshot.mjs"
+  ]
+}

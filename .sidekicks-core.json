@@ -1,10 +1,10 @@
 {
   "schema": 1,
   "name": "sidekicks-core",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "layout": 1,
   "remote": "https://github.com/utranand/sidekicks-core.git",
   "ref": "main",
-  "forged_at": "2026-09-21T09:59:02+07:00",
-  "source_commit": "8a3b1d7f"
+  "forged_at": "2026-10-01T22:56:24+07:00",
+  "source_commit": "99b5b733"
 }

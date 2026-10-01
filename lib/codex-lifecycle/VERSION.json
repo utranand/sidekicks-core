@@ -1,0 +1,8 @@
+{
+  "name": "codex-lifecycle",
+  "version": "1.0.0",
+  "description": "codex-lifecycle library component",
+  "files": [
+    "task.mjs"
+  ]
+}

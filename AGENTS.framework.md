@@ -29,7 +29,7 @@ Full reference for the mount itself: `.sidekicks-core/README.md`.
 
 ---
 # sidekicks-core — Lean Sidekicks core
-Generated from 8a3b1d7f on 2026-09-21T09:59:02+07:00; replaced on re-forge.
+Generated from 99b5b733 on 2026-10-01T22:56:24+07:00; replaced on re-forge.
 
 It runs two ways: **Mounted at `.sidekicks-core/` by a workspace** — This tree is read-only;
 local instructions belong in the workspace's AGENTS.md, which moves to a newer runtime with `sidekicks core update`.
